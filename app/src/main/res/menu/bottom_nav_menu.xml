@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_tops"
+        android:icon="@drawable/round_align_horizontal_left_24"
+        android:title="@string/top_fragment_title" />
+
+    <item
+        android:id="@+id/navigation_recommendation"
+        android:icon="@drawable/round_star_24"
+        android:title="@string/recommendation_fragment_title" />
+
+    <item
+        android:id="@+id/navigation_favorite"
+        android:icon="@drawable/round_favorite_24"
+        android:title="@string/favorite_fragment_title" />
+
+</menu>

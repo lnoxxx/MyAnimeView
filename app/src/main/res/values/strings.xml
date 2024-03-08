@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MyAnimeView</string>
+    <string name="top_fragment_title">Рейтинги</string>
+    <string name="recommendation_fragment_title">Рекомендации</string>
+    <string name="favorite_fragment_title">Любимое</string>
+    <string name="search_title">Поиск</string>
+    <string name="types_of_anime_categoryes">Типы топов</string>
+
+    <string name="airing_title">Онгоинги</string>
+    <string name="upcoming_title">Анонсы</string>
+    <string name="bypopularity_title">По популярности</string>
+    <string name="favorite_title">Лучшие оценки</string>
+    <string name="animeimage_content_discript">animeImage</string>
+
+</resources>

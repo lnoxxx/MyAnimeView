@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_tops">
+
+    <fragment
+        android:id="@+id/navigation_recommendation"
+        android:name="com.lnoxx.myanimeview.ui.recommendation.RecommendationFragment"
+        android:label="@string/recommendation_fragment_title"
+        tools:layout="@layout/fragment_recommendation" />
+
+    <fragment
+        android:id="@+id/navigation_tops"
+        android:name="com.lnoxx.myanimeview.ui.tops.TopsFragment"
+        android:label="@string/top_fragment_title"
+        tools:layout="@layout/fragment_tops" />
+
+    <fragment
+        android:id="@+id/navigation_favorite"
+        android:name="com.lnoxx.myanimeview.ui.favorite.FavoriteFragment"
+        android:label="@string/favorite_fragment_title"
+        tools:layout="@layout/fragment_favorite" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.lnoxx.myanimeview.ui.search.SearchFragment"
+        android:label="@string/search_title"
+        tools:layout="@layout/fragment_search_fragement" />
+    <fragment
+        android:id="@+id/animeViewFragment"
+        android:name="com.lnoxx.myanimeview.ui.animeView.AnimeViewFragment"
+        android:label="fragment_anime_view"
+        tools:layout="@layout/fragment_anime_view" />
+</navigation>
