@@ -53,6 +53,7 @@
     </style>
     <!--ToolBar-->
     <style name="ToolBarStyle">
+        <item name="iconTint" >@color/md_theme_dark_onSurface</item>
         <item name="android:background">@color/md_theme_light_inverseSurface</item>
     </style>
     <!--AnimeBackground-->

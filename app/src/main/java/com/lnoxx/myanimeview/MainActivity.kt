@@ -1,6 +1,7 @@
 package com.lnoxx.myanimeview
 
 import android.os.Bundle
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -8,11 +9,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.lnoxx.myanimeview.databinding.ActivityMainBinding
-import com.lnoxx.myanimeview.jikanApi.enumClasses.TopFilter
-import com.lnoxx.myanimeview.topsDatabase.TopUpdateTime
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -35,5 +31,12 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onSupportNavigateUp(): Boolean {
         return findNavController(R.id.nav_host_fragment).navigateUp()
+    }
+    fun showBottomNavBar(show: Boolean) {
+        if (show) {
+            binding.navView.visibility = View.VISIBLE
+        } else {
+            binding.navView.visibility = View.GONE
+        }
     }
 }

@@ -48,25 +48,31 @@ class TopListFragment : Fragment() {
         binding.topListRecyclerView.layoutManager = LinearLayoutManager(context)
         binding.topListRecyclerView.adapter = adapter
         setContent()
+        setRefreshLayout()
+        return binding.root
+    }
+
+    private fun setRefreshLayout(){
+        binding.refreshLayout.isRefreshing = true
         binding.refreshLayout.setColorSchemeResources(R.color.md_theme_light_inverseSurface)
         binding.refreshLayout.setOnRefreshListener {
             CoroutineScope(Dispatchers.IO).launch {
                 setContentFromApi()
-                Thread.sleep(1000)
                 withContext(Dispatchers.Main){
                     binding.refreshLayout.isRefreshing = false
                 }
             }
         }
-        return binding.root
     }
 
     private fun setContent(){
         CoroutineScope(Dispatchers.IO).launch {
             if (getUpdateStatus()){
                 setContentFromApi()
+                binding.refreshLayout.isRefreshing = false
             } else {
                 setContentFromDatabase()
+                binding.refreshLayout.isRefreshing = false
             }
         }
     }
@@ -125,7 +131,6 @@ class TopListFragment : Fragment() {
             true
         } else currentDay == lastUpdateTime.day && currentMount > lastUpdateTime.month
     }
-
     companion object {
         @JvmStatic
         fun newInstance(topFilter: String) =
@@ -135,5 +140,4 @@ class TopListFragment : Fragment() {
                 }
             }
     }
-
 }

@@ -15,7 +15,15 @@
         android:id="@+id/navigation_tops"
         android:name="com.lnoxx.myanimeview.ui.tops.TopsFragment"
         android:label="@string/top_fragment_title"
-        tools:layout="@layout/fragment_tops" />
+        tools:layout="@layout/fragment_tops" >
+        <action
+            android:id="@+id/action_navigation_tops_to_searchFragment"
+            app:destination="@id/searchFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_favorite"

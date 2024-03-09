@@ -24,4 +24,14 @@ class SearchFragment : Fragment() {
         binding = FragmentSearchFragementBinding.inflate(inflater)
         return binding.root
     }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as MainActivity).showBottomNavBar(false)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        (activity as MainActivity).showBottomNavBar(true)
+    }
 }
