@@ -1,6 +1,7 @@
 package com.lnoxx.myanimeview.ui.tops
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -25,6 +26,32 @@ class TopsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentTopsBinding.inflate(inflater)
+        binding.typeListViewPager.offscreenPageLimit = 4
+        setTabLayout()
+        Log.d("mylog", "Main tops fragment createView")
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.toolbar_search_menu, menu)
+            }
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    R.id.searchIcon -> {
+                        findNavController().navigate(R.id.action_navigation_tops_to_searchFragment)
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+    }
+
+    private fun setTabLayout(){
         binding.typeListViewPager.adapter =
             ViewPagerTopAdapter(childFragmentManager, lifecycle)
         TabLayoutMediator(binding.filterTabLayout, binding.typeListViewPager){ tab, position ->
@@ -36,27 +63,5 @@ class TopsFragment : Fragment() {
                 else -> throw IllegalArgumentException()
             }
         }.attach()
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val menuHost: MenuHost = requireActivity()
-
-        menuHost.addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.toolbar_search_menu, menu)
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                return when (menuItem.itemId) {
-                    R.id.searchIcon -> {
-                        findNavController().navigate(R.id.action_navigation_tops_to_searchFragment)
-                        true
-                    }
-                    else -> false
-                }
-            }
-        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 }

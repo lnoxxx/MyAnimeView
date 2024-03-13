@@ -39,7 +39,7 @@ class TopListAdapter(private var animeList: MutableList<AnimeInTop>)
         holder.bind(animeList[position])
     }
 
-    fun addAnime(newAnime: MutableList<AnimeInTop>){
+    fun setAnime(newAnime: MutableList<AnimeInTop>){
         animeList = newAnime
         notifyDataSetChanged()
     }

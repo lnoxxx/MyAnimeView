@@ -1,6 +1,5 @@
 package com.lnoxx.myanimeview.ui.tops.topListFragment
 
-import android.content.res.Resources.Theme
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -45,10 +44,11 @@ class TopListFragment : Fragment() {
     ): View {
         binding = FragmentTopListBinding.inflate(inflater)
         adapter = TopListAdapter(mutableListOf())
+        Log.d("mylog", "$topFilter fragment createView")
+        setRefreshLayout()
+        setContent()
         binding.topListRecyclerView.layoutManager = LinearLayoutManager(context)
         binding.topListRecyclerView.adapter = adapter
-        setContent()
-        setRefreshLayout()
         return binding.root
     }
 
@@ -83,8 +83,7 @@ class TopListFragment : Fragment() {
             val topList = animeListToTopList(animeTop.data, topFilter)
             cacheAnimeTop(topList)
             withContext(Dispatchers.Main){
-                adapter.addAnime(topList)
-
+                adapter.setAnime(topList)
             }
         }catch (e: Exception){
             Log.d("mylog", e.message.toString())
@@ -95,7 +94,7 @@ class TopListFragment : Fragment() {
         try {
             val topList = topsTypeDatabase.getTopsAnimeDao().getAnimeInTop(topFilter)
             withContext(Dispatchers.Main){
-                adapter.addAnime(topList)
+                adapter.setAnime(topList)
             }
         }catch (e: Exception){
             Log.d("mylog", e.message.toString())

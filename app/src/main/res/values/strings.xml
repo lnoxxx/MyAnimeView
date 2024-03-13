@@ -11,5 +11,6 @@
     <string name="bypopularity_title">По популярности</string>
     <string name="favorite_title">Лучшие оценки</string>
     <string name="animeimage_content_discript">animeImage</string>
+    <string name="user_photo_content_discript">user photo</string>
 
 </resources>

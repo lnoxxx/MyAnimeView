@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 
 @Database(entities = [
     TopUpdateTime::class,
-    AnimeInTop::class
+    AnimeInTop::class,
                      ], version = 1)
 abstract class TopsTypeDatabase:RoomDatabase(){
     abstract fun getTopUpdateTimeDao(): TopUpdateTimeDao

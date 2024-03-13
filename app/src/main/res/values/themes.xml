@@ -64,4 +64,8 @@
     <style name="TextIconTintStyle">
         <item name="android:drawableTint">@color/md_theme_light_outline</item>
     </style>
+    <!--GradientBackground-->
+    <style name="GradientBackground">
+        <item name="android:background">@drawable/gradient_background_light</item>
+    </style>
 </resources>
