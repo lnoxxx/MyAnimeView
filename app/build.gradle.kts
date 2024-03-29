@@ -49,6 +49,8 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
     //picasso
     implementation ("com.squareup.picasso:picasso:2.8")
+    implementation("jp.wasabeef:picasso-transformations:2.4.0")
+    implementation("jp.co.cyberagent.android:gpuimage:2.1.0")
     //okhttp
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")

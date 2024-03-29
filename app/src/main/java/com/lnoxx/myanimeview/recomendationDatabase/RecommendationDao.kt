@@ -26,3 +26,13 @@ interface ReviewDao{
     @Query("SELECT * FROM review")
     fun getReview(): MutableList<ReviewCache>
 }
+
+@Dao
+interface RecommendationDao{
+    @Query("DELETE FROM recommendation")
+    fun deleteOldRecommendation()
+    @Insert
+    fun insertAll(recommendationList : List<RecommendationCache>)
+    @Query("SELECT * FROM recommendation")
+    fun getRecommendation(): MutableList<RecommendationCache>
+}

@@ -1,99 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style='@style/AnimeBackground'
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="8dp"
-    android:layout_marginTop="8dp"
-    android:orientation="vertical">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/userImageCardView"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginVertical="8dp"
-            app:cardCornerRadius="64dp"
-            app:cardElevation="0dp">
-
-            <ImageView
-                android:id="@+id/userImage"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/user_photo_content_discript"
-                android:scaleType="centerCrop"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/userNameTextView"
-            style="@style/MaterialAlertDialog.Material3.Body.Text"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:singleLine="true"
-            android:textSize="16sp"
-            tools:text="Username" />
-
-        <TextView
-            android:id="@+id/score"
-            style="@style/MaterialAlertDialog.Material3.Body.Text"
-            android:layout_width="wrap_content"
-
-            android:layout_height="match_parent"
-            android:layout_marginEnd="8dp"
-            android:drawablePadding="4dp"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:theme="@style/TextIconTintStyle"
-            app:drawableRightCompat="@drawable/round_star_16"
-            tools:text="9.3" />
-    </LinearLayout>
+    android:orientation="vertical"
+    android:paddingTop="12dp"
+    android:paddingEnd="12dp">
 
     <androidx.cardview.widget.CardView
+        style="@style/CardViewBackground"
         android:layout_width="match_parent"
-        android:layout_height="405dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp">
+        android:layout_height="250dp"
+        android:foreground="?attr/selectableItemBackground">
 
-        <ImageView
-            android:id="@+id/animeImage"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/animeimage_content_discript"
-            android:scaleType="centerCrop"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+            android:layout_height="match_parent">
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/userImageCardView"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="64dp"
+                app:cardElevation="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/userImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/user_photo_content_discript"
+                    android:scaleType="centerCrop"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/score"
+                style="@style/MaterialAlertDialog.Material3.Body.Text"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:drawableRight="@drawable/round_star_16"
+                android:drawablePadding="4dp"
+                android:gravity="center"
+                android:theme="@style/TextIconTintStyle"
+                app:layout_constraintBottom_toBottomOf="@+id/userImageCardView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/userImageCardView"
+                tools:text="9/10" />
+
+            <TextView
+                android:id="@+id/userNameTextView"
+                style="@style/MaterialAlertDialog.Material3.Body.Text"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/userImageCardView"
+                app:layout_constraintEnd_toStartOf="@+id/score"
+                app:layout_constraintStart_toEndOf="@+id/userImageCardView"
+                app:layout_constraintTop_toTopOf="@+id/userImageCardView"
+                tools:text="Username" />
+
+            <androidx.cardview.widget.CardView
+                style="@style/CardViewBackground"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="@color/md_theme_dark_outline"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/userNameTextView">
+
+                <ImageView
+                    android:id="@+id/animeImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/animeimage_content_discript"
+                    android:scaleType="centerCrop"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+                <TextView
+                    android:id="@+id/AnimeOnReviewName"
+                    style="@style/MaterialAlertDialog.Material3.Title.Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/gradient_background"
+                    android:gravity="bottom"
+                    android:maxLines="3"
+                    android:padding="32dp"
+                    android:singleLine="false"
+                    android:textColor="@color/md_theme_light_surface"
+                    tools:text="Название аниме" />
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/AnimeOnReviewName"
-        style="@style/MaterialAlertDialog.Material3.Body.Text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginTop="8dp"
-        android:singleLine="true"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        tools:text="Anime name" />
-
-    <TextView
-        android:id="@+id/ReviewText"
-        style="@style/MaterialAlertDialog.Material3.Body.Text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginVertical="8dp"
-        android:maxLines="4"
-        tools:text="When it comes to school romcom, we have cliché all over the place. Kimi ni todoke does take part in some of them, but in a refreshing way. This romance does show unique traits and a very c" />
-
-</LinearLayout>
+</FrameLayout>

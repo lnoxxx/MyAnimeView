@@ -3,6 +3,7 @@ package com.lnoxx.myanimeview.ui.recommendation.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.lnoxx.myanimeview.R
 import com.lnoxx.myanimeview.databinding.ItemReviewBinding
@@ -18,8 +19,10 @@ class ReviewRvAdapter(private var reviewList: MutableList<ReviewCache>)
             Picasso.get().load(review.animeImage).into(binding.animeImage)
             binding.userNameTextView.text = review.userName
             binding.AnimeOnReviewName.text = review.animeName
-            binding.ReviewText.text = review.review
-            binding.score.text = review.score.toString()
+            val score = "${review.score}/10"
+            binding.score.text = score
+            itemView.setOnClickListener {
+            }
         }
     }
 
@@ -37,6 +40,6 @@ class ReviewRvAdapter(private var reviewList: MutableList<ReviewCache>)
 
     fun setReview(newReview: MutableList<ReviewCache>){
         reviewList = newReview
-        notifyItemRangeInserted(0, reviewList.size)
+        notifyDataSetChanged()
     }
 }

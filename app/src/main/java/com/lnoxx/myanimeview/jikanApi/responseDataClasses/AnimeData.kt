@@ -1,5 +1,9 @@
 package com.lnoxx.myanimeview.jikanApi.responseDataClasses
 
+data class FullAnimeResponse(
+    val data: Anime
+)
+
 data class Anime(
     val mal_id: Int,
     val url: String,

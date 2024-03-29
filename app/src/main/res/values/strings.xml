@@ -12,5 +12,22 @@
     <string name="favorite_title">Лучшие оценки</string>
     <string name="animeimage_content_discript">animeImage</string>
     <string name="user_photo_content_discript">user photo</string>
+    <string name="user_recommendation_titile">Рекомендаци пользователей:</string>
+    <string name="spoilers">Спойлеры</string>
+
+    <string name="random_anime_button_title">Случайное аниме</string>
+    <string name="schedules_button_title">Расписание</string>
+    <string name="charecters_button_title">Персонажи</string>
+    <string name="magazines_button_title">Журналы</string>
+    <string name="reviews_title">Обзоры дня</string>
+    <string name="more_button_text">Еще</string>
+    <string name="anime_toolbar_title">Аниме</string>
+
+    <string name="ok">Ок</string>
+    <string name="errorTitle">Ошибка</string>
+    <string name="errorInternet">Проверьте ваше интернет соединение</string>
+    <string name="errorUnknown">Неизвестная ошибка</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

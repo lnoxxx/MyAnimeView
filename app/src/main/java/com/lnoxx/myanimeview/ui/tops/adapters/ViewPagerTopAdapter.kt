@@ -7,8 +7,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.lnoxx.myanimeview.jikanApi.enumClasses.TopFilter
 import com.lnoxx.myanimeview.ui.tops.topListFragment.TopListFragment
 
-class ViewPagerTopAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle)
-    : FragmentStateAdapter(fragmentManager, lifecycle){
+class ViewPagerTopAdapter(fragment: Fragment)
+    : FragmentStateAdapter(fragment){
     private val pageNumbers = 4
     override fun getItemCount() = pageNumbers
     override fun createFragment(position: Int): Fragment {

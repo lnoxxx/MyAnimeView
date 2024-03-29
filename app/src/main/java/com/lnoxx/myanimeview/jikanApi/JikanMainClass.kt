@@ -1,5 +1,6 @@
 package com.lnoxx.myanimeview.jikanApi
 
+import com.lnoxx.myanimeview.jikanApi.responseDataClasses.Anime
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.RecommendationAnimeResponse
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.ReviewsResponse
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.TopAnimeResponse
@@ -10,7 +11,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val requestPerSecond = 3
+const val requestPerSecond = 2
 const val serverDelay = 1000L
 object JikanMainClass {
     private val loggingInterceptor = HttpLoggingInterceptor()
@@ -26,25 +27,53 @@ object JikanMainClass {
         .build()
     private val jikanAPI = retrofit.create(JikanAPI::class.java)
 
-    suspend fun getAnimeTop(filter: String): TopAnimeResponse{
-        semaphore.acquire()
-        val response = jikanAPI.getTopAnime(filter)
-        delay(serverDelay)
-        semaphore.release()
-        return response
+    suspend fun getAnimeTop(filter: String, page: Int = 1): TopAnimeResponse{
+        try {
+            semaphore.acquire()
+            val response = jikanAPI.getTopAnime(filter, page)
+            delay(serverDelay)
+            semaphore.release()
+            return response
+        }catch (e: Exception){
+            semaphore.release()
+            throw e
+        }
     }
-    suspend fun getReviewTop(spoilers: Boolean): ReviewsResponse{
-        semaphore.acquire()
-        val response = jikanAPI.getTopReviews(spoilers)
-        delay(serverDelay)
-        semaphore.release()
-        return response
+    suspend fun getReviewTop(): ReviewsResponse{
+        try{
+            semaphore.acquire()
+            val response = jikanAPI.getTopReviews()
+            delay(serverDelay)
+            semaphore.release()
+            return response
+        }catch (e: Exception){
+            semaphore.release()
+            throw e
+        }
     }
     suspend fun getAnimeRecommendation(): RecommendationAnimeResponse{
-        semaphore.acquire()
-        val response = jikanAPI.getAnimeRecommendation()
-        delay(serverDelay)
-        semaphore.release()
-        return response
+        try{
+            semaphore.acquire()
+            val response = jikanAPI.getAnimeRecommendation()
+            delay(serverDelay)
+            semaphore.release()
+            return response
+        }catch (e: Exception){
+            semaphore.release()
+            throw e
+        }
+    }
+
+    suspend fun getFullAnimeInfo(malId: Int): Anime{
+        try{
+            semaphore.acquire()
+            val response = jikanAPI.getFullAnimeInfo(malId)
+            delay(serverDelay)
+            semaphore.release()
+            return response
+        }catch (e: Exception){
+            semaphore.release()
+            throw e
+        }
     }
 }

@@ -10,8 +10,12 @@ import com.lnoxx.myanimeview.topsDatabase.TopsTypeDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.Calendar
 
 class AnimeViewApplication: Application() {
+    private val calendar = Calendar.getInstance()
+    val currentDay = calendar.get(Calendar.DAY_OF_MONTH)
+    val currentMount = calendar.get(Calendar.MONTH)
     val topsTypeDatabase by lazy {
         Room.databaseBuilder(
             this,
@@ -19,7 +23,6 @@ class AnimeViewApplication: Application() {
             "TopTypesDatabase"
         ).build()
     }
-
     val recommendationDatabase by lazy {
         Room.databaseBuilder(
             this,
@@ -34,6 +37,8 @@ class AnimeViewApplication: Application() {
             if (reviewCnt == 0){
                 recommendationDatabase.getRecommendationUpdateTimeDao().insert(
                     RecommendationUpdateTime("review",0,0))
+                recommendationDatabase.getRecommendationUpdateTimeDao().insert(
+                    RecommendationUpdateTime("recommendation",0,0))
             }
             val topCnt = topsTypeDatabase.getTopUpdateTimeDao().getCount()
             if (topCnt == 0){

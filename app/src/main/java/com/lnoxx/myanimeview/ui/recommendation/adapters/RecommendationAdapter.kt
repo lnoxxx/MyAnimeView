@@ -3,20 +3,25 @@ package com.lnoxx.myanimeview.ui.recommendation.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.lnoxx.myanimeview.R
 import com.lnoxx.myanimeview.databinding.ItemRecommendationAnimeBinding
-import com.lnoxx.myanimeview.jikanApi.responseDataClasses.AnimeRecommendation
+import com.lnoxx.myanimeview.recomendationDatabase.RecommendationCache
 import com.squareup.picasso.Picasso
 
-class RecommendationAdapter(private var animeList: MutableList<AnimeRecommendation>)
+class RecommendationAdapter(private var animeList: MutableList<RecommendationCache>)
     : RecyclerView.Adapter<RecommendationAdapter.RecViewHolder>() {
     class RecViewHolder(view: View): RecyclerView.ViewHolder(view){
         private val binding = ItemRecommendationAnimeBinding.bind(view)
-        fun bind(anime: AnimeRecommendation){
-            Picasso.get().load(anime.images.jpg.large_image_url)
-                .into(binding.animeRecommendationImageView)
+        fun bind(anime: RecommendationCache){
+            if (anime.images != ""){
+                Picasso.get().load(anime.images)
+                    .into(binding.animeRecommendationImageView)
+            }
             binding.animeRecommendationName.text = anime.title
+            itemView.setOnClickListener {
+            }
         }
     }
 
@@ -32,8 +37,13 @@ class RecommendationAdapter(private var animeList: MutableList<AnimeRecommendati
         holder.bind(animeList[position])
     }
 
-    fun setAnime(newAnimeList: MutableList<AnimeRecommendation>){
+    fun setAnime(newAnimeList: MutableList<RecommendationCache>){
         animeList = newAnimeList
-        notifyItemRangeInserted(0, animeList.size)
+        notifyDataSetChanged()
+    }
+
+    companion object PreLoading{
+        private val emptyItem = RecommendationCache(-1,"","","...",-1)
+        val emptyList = MutableList(10){emptyItem}
     }
 }

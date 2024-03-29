@@ -1,6 +1,8 @@
 package com.lnoxx.myanimeview
 
+import android.content.Context
 import android.os.Bundle
+import android.util.AttributeSet
 import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +11,10 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.lnoxx.myanimeview.databinding.ActivityMainBinding
+import com.lnoxx.myanimeview.ui.favorite.FavoriteFragment
+import com.lnoxx.myanimeview.ui.recommendation.RecommendationFragment
+import com.lnoxx.myanimeview.ui.recommendation.adapters.RecommendationAdapter
+import com.lnoxx.myanimeview.ui.tops.TopsFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -29,6 +35,8 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
+
+
     override fun onSupportNavigateUp(): Boolean {
         return findNavController(R.id.nav_host_fragment).navigateUp()
     }

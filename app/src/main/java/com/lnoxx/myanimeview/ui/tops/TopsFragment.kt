@@ -1,7 +1,6 @@
 package com.lnoxx.myanimeview.ui.tops
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -20,20 +19,23 @@ import com.lnoxx.myanimeview.ui.tops.adapters.ViewPagerTopAdapter
 
 class TopsFragment : Fragment() {
     private lateinit var binding : FragmentTopsBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentTopsBinding.inflate(inflater)
-        binding.typeListViewPager.offscreenPageLimit = 4
-        setTabLayout()
-        Log.d("mylog", "Main tops fragment createView")
+        setActionBar()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setTabLayout()
+    }
+
+    private fun setActionBar(){
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -53,7 +55,7 @@ class TopsFragment : Fragment() {
 
     private fun setTabLayout(){
         binding.typeListViewPager.adapter =
-            ViewPagerTopAdapter(childFragmentManager, lifecycle)
+            ViewPagerTopAdapter(this)
         TabLayoutMediator(binding.filterTabLayout, binding.typeListViewPager){ tab, position ->
             tab.text = when(position){
                 0 -> getString(R.string.airing_title)
