@@ -21,13 +21,34 @@
     <string name="magazines_button_title">Журналы</string>
     <string name="reviews_title">Обзоры дня</string>
     <string name="more_button_text">Еще</string>
-    <string name="anime_toolbar_title">Аниме</string>
+    <string name="hide_button_text">Скрыть</string>
+    <string name="anime_toolbar_title">Загрузка…</string>
+
+    <string name="no_synopsys">Нет описания</string>
 
     <string name="ok">Ок</string>
     <string name="errorTitle">Ошибка</string>
     <string name="errorInternet">Проверьте ваше интернет соединение</string>
     <string name="errorUnknown">Неизвестная ошибка</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="episodes">эп</string>
+    <string name="synopsys_title">Описание</string>
+    <string name="raiting_titile">Рейтинг</string>
+
+    <string name="voice_text">Голосов -</string>
+    <string name="likes">лайков</string>
+    <string name="in">В</string>
+    <string name="user_list">списках</string>
+    <string name="popularity">По популярности: </string>
+    <string name="trailer_title">Трейлер</string>
+    <string name="music_title">Музыка</string>
+
+    <string name="openings">Опенинги:</string>
+    <string name="endings">Эндинги:</string>
+    <string name="theme_text">Темы</string>
+    <string name="anime_dont_have_themes">У произведения нет тем!</string>
+    <string name="no_studios">Нет информации</string>
+    <string name="related_title">Связанные произведения</string>
+    <string name="date_title">Даты</string>
 
 </resources>

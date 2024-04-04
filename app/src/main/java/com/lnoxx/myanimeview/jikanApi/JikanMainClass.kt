@@ -67,7 +67,7 @@ object JikanMainClass {
     suspend fun getFullAnimeInfo(malId: Int): Anime{
         try{
             semaphore.acquire()
-            val response = jikanAPI.getFullAnimeInfo(malId)
+            val response = jikanAPI.getFullAnimeInfo(malId).data
             delay(serverDelay)
             semaphore.release()
             return response

@@ -62,7 +62,7 @@
         <item name="android:background">@drawable/anime_item_background_dark</item>
     </style>
     <!--TextWithDrawableTint-->
-    <style name="TextIconTintStyle">
+    <style name="TextIconTintStyle" parent="MaterialAlertDialog.Material3.Body.Text">
         <item name="android:drawableTint">@color/md_theme_dark_outline</item>
     </style>
     <!--Switch-->
@@ -92,13 +92,37 @@
     </style>
     <!--CardViewBackgroundStyle-->
     <style name="CardViewBackground">
-        <item name="cardCornerRadius">16dp</item>
+        <item name="cardCornerRadius">8dp</item>
         <item name="cardBackgroundColor">@color/md_theme_light_inverseSurface</item>
         <item name="cardElevation">0dp</item>
     </style>
     <!--BackgroundedTextView-->
     <style name="BackgroundedTextView" parent="MaterialAlertDialog.Material3.Body.Text">
         <item name="android:background">@drawable/anime_item_background_dark</item>
-        <item name="android:padding">8dp</item>
+        <item name="android:textColor">@color/md_theme_light_surface</item>
+        <item name="android:paddingHorizontal">16dp</item>
+        <item name="android:paddingVertical">8dp</item>
+        <item name="android:drawableTint">@color/md_theme_dark_onSurfaceVariant</item>
+    </style>
+    <!--WhiteBlackTitle-->
+    <style name="WhiteBlackTitle" parent="MaterialAlertDialog.Material3.Title.Text">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <!--ProgressIndicator-->
+    <style name="ProgressIndicatorStyle">
+        <item name="indicatorColor">@color/md_theme_dark_onSurfaceVariant</item>
+        <item name="trackColor">@color/md_theme_dark_outlineVariant</item>
+    </style>
+    <!--Material3TextWithDrawable-->
+    <style name="Material3TextWithDrawable" parent="MaterialAlertDialog.Material3.Body.Text">
+        <item name="android:drawableTint">@color/md_theme_dark_outline</item>
+    </style>
+    <!--Material3TitleWithDrawable-->
+    <style name="Material3TitleWithDrawable" parent="MaterialAlertDialog.Material3.Title.Text">
+        <item name="android:drawableTint">@color/md_theme_dark_onSurface</item>
+    </style>
+    <!--BottomSheetBackground-->
+    <style name="BottomSheetBackground">
+        <item name="android:background">@drawable/bottom_sheet_background_dark</item>
     </style>
 </resources>

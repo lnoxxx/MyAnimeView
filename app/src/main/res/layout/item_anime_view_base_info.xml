@@ -3,13 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/AnimeViewBackgroundImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="-16dp"
+        android:alpha="0.25"
+        android:contentDescription="@string/animeimage_content_discript"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="@+id/cardView2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +40,7 @@
 
     <TextView
         android:id="@+id/AnimeTitle"
-        style="@style/MaterialAlertDialog.Material3.Title.Text"
+        style="@style/WhiteBlackTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -53,22 +55,25 @@
     <TextView
         android:id="@+id/AnimeType"
         style="@style/BackgroundedTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="@+id/AnimeTitle"
         app:layout_constraintTop_toBottomOf="@+id/AnimeTitle"
-        tools:text="TV" />
+        tools:text="Special" />
 
     <TextView
         android:id="@+id/Episodes"
         style="@style/BackgroundedTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/AnimeType"
         app:layout_constraintTop_toTopOf="@+id/AnimeType"
-        tools:text="24 episodes" />
+        tools:text="243 episodes" />
 
     <TextView
         android:id="@+id/AnimeStatus"
@@ -83,9 +88,12 @@
     <TextView
         android:id="@+id/AnimeAgeRaiting"
         style="@style/BackgroundedTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/AnimeStatus"
         app:layout_constraintTop_toTopOf="@+id/AnimeStatus"
         tools:text="PG-13" />

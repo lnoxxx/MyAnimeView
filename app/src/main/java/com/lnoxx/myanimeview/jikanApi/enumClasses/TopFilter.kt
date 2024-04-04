@@ -10,6 +10,6 @@ enum class TopFilter {
         AIRING -> "airing"
         UPCOMING -> "upcoming"
         BYPOPULARITY -> "bypopularity"
-        FAVORITE -> "favorite"
+        FAVORITE -> ""
     }
 }

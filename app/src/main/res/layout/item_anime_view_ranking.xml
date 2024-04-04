@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginTop="8dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/RatingCardView"
+        style="@style/CardViewBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/RatungCardTitle"
+                style="@style/MaterialAlertDialog.Material3.Title.Text"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:text="@string/raiting_titile"
+                app:layout_constraintBottom_toBottomOf="@+id/Score"
+                app:layout_constraintEnd_toStartOf="@+id/Score"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/Score"
+                style="@style/Material3TitleWithDrawable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="4dp"
+                android:textSize="24sp"
+                app:drawableEndCompat="@drawable/round_star_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="9.5" />
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintStart_toStartOf="@+id/RatungCardTitle"
+                app:layout_constraintTop_toBottomOf="@+id/RatungCardTitle" />
+
+            <TextView
+                android:id="@+id/GlobalRank"
+                style="@style/BackgroundedTextView"
+                android:layout_width="0dp"
+                android:layout_height="96dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:minWidth="96dp"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider3"
+                tools:text="#112346" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@+id/GlobalRank"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/GlobalRank"
+                app:layout_constraintTop_toTopOf="@+id/GlobalRank">
+
+                <TextView
+                    android:id="@+id/InFavoriteCount"
+                    style="@style/Material3TextWithDrawable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="4dp"
+                    android:textSize="16sp"
+                    app:drawableStartCompat="@drawable/round_favorite_border_16"
+                    tools:text="12345 likes" />
+
+                <TextView
+                    android:id="@+id/InListCount"
+                    style="@style/Material3TextWithDrawable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="4dp"
+                    android:textSize="16sp"
+                    app:drawableStartCompat="@drawable/round_bookmark_border_16"
+                    tools:text="In 2345 user lists" />
+
+                <TextView
+                    android:id="@+id/ByPopylarity"
+                    style="@style/Material3TextWithDrawable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="4dp"
+                    android:textSize="16sp"
+                    app:drawableStartCompat="@drawable/round_stacked_line_chart_16"
+                    tools:text="Popularity: 1234" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</FrameLayout>

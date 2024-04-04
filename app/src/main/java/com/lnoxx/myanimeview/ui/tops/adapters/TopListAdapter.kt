@@ -21,9 +21,8 @@ class TopListAdapter(
             binding.animePos.text = ratingPos
             binding.animeTitle.text = anime.title
             val episodes = if (anime.episodes != 0) anime.episodes.toString() else "?"
-            val ratingText =  "$episodes episodes  •  ${anime.score}"
+            val ratingText =  "$episodes ${itemView.context.getString(R.string.episodes)}  •  ${anime.score}"
             binding.animeRaiting.text = ratingText
-            binding.animeSynopsis.text = anime.synopsis
             Picasso.get().load(anime.imageUrl).into(binding.animeImageView)
             itemView.setOnClickListener {
                 listener.onClick(anime)
