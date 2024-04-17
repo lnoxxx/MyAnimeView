@@ -1,6 +1,7 @@
 package com.lnoxx.myanimeview.jikanApi
 
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.Anime
+import com.lnoxx.myanimeview.jikanApi.responseDataClasses.AnimeStatisticData
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.RecommendationAnimeResponse
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.ReviewsResponse
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.TopAnimeResponse
@@ -11,7 +12,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val requestPerSecond = 2
+const val requestPerSecond = 1
 const val serverDelay = 1000L
 object JikanMainClass {
     private val loggingInterceptor = HttpLoggingInterceptor()
@@ -68,6 +69,32 @@ object JikanMainClass {
         try{
             semaphore.acquire()
             val response = jikanAPI.getFullAnimeInfo(malId).data
+            delay(serverDelay)
+            semaphore.release()
+            return response
+        }catch (e: Exception){
+            semaphore.release()
+            throw e
+        }
+    }
+
+    suspend fun getAnimeStatistic(malId: Int): AnimeStatisticData{
+        try{
+            semaphore.acquire()
+            val response = jikanAPI.getAnimeStatistic(malId).data
+            delay(serverDelay)
+            semaphore.release()
+            return response
+        }catch (e: Exception){
+            semaphore.release()
+            throw e
+        }
+    }
+
+    suspend fun getAnimeComments(malId: Int): ReviewsResponse{
+        try{
+            semaphore.acquire()
+            val response = jikanAPI.getAnimeComments(malId)
             delay(serverDelay)
             semaphore.release()
             return response

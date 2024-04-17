@@ -4,6 +4,8 @@ import android.app.Application
 import androidx.room.Room
 import com.lnoxx.myanimeview.jikanApi.enumClasses.TopFilter
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.Anime
+import com.lnoxx.myanimeview.jikanApi.responseDataClasses.AnimeStatisticData
+import com.lnoxx.myanimeview.jikanApi.responseDataClasses.ReviewsResponse
 import com.lnoxx.myanimeview.recomendationDatabase.RecommendationDatabase
 import com.lnoxx.myanimeview.recomendationDatabase.RecommendationUpdateTime
 import com.lnoxx.myanimeview.topsDatabase.TopUpdateTime
@@ -14,7 +16,9 @@ import kotlinx.coroutines.launch
 import java.util.Calendar
 
 class AnimeViewApplication: Application() {
+    val commentsCache = mutableMapOf<Int, ReviewsResponse>()
     val animeSessionCache = mutableMapOf<Int, Anime>()
+    val animeStatisticCache = mutableMapOf<Int, AnimeStatisticData>()
     private val calendar = Calendar.getInstance()
     val currentDay = calendar.get(Calendar.DAY_OF_MONTH)
     val currentMount = calendar.get(Calendar.MONTH)

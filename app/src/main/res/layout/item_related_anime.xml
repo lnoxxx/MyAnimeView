@@ -1,29 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-    <TextView
-        android:id="@+id/RelatedAnimeItem"
-        style="@style/BackgroundedTextView"
-        android:layout_width="0dp"
-        android:layout_height="72dp"
-        android:layout_marginStart="8dp"
-        android:layout_weight="1"
-        android:foreground="?attr/selectableItemBackground"
-        android:gravity="center"
-        tools:text="Название" />
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/helperLine"
-        style="@style/scrollHelperStyle"
-        android:layout_width="32dp"
-        android:layout_height="4dp"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="8dp"
-        app:cardCornerRadius="32dp"
-        app:cardElevation="0dp" />
-</LinearLayout>
+        style="@style/CardViewBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?attr/selectableItemBackground"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="4dp">
+        <TextView
+            style="@style/MaterialAlertDialog.Material3.Body.Text"
+            android:layout_margin="16dp"
+            android:id="@+id/RelatedAnimeItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            tools:text="test name" />
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

@@ -54,5 +54,30 @@
         android:id="@+id/animeViewFragment"
         android:name="com.lnoxx.myanimeview.ui.animeView.AnimeViewFragment"
         android:label="@string/anime_toolbar_title"
-        tools:layout="@layout/fragment_anime_view" />
+        tools:layout="@layout/fragment_anime_view" >
+        <action
+            android:id="@+id/action_animeViewFragment_to_relatedFragment"
+            app:destination="@id/relatedFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_animeViewFragment_to_allCommentsFragment"
+            app:destination="@id/allCommentsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/relatedFragment"
+        android:name="com.lnoxx.myanimeview.ui.related.RelatedFragment"
+        android:label="@string/related_fragment_title"
+        tools:layout="@layout/fragment_related" />
+    <fragment
+        android:id="@+id/allCommentsFragment"
+        android:name="com.lnoxx.myanimeview.ui.allComments.AllCommentsFragment"
+        android:label="@string/comments"
+        tools:layout="@layout/fragment_all_comments" />
 </navigation>

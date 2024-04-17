@@ -48,7 +48,21 @@
     <string name="theme_text">Темы</string>
     <string name="anime_dont_have_themes">У произведения нет тем!</string>
     <string name="no_studios">Нет информации</string>
-    <string name="related_title">Связанные произведения</string>
+    <string name="related_title">Связаное</string>
     <string name="date_title">Даты</string>
+
+    <string name="related_fragment_title">Связанное</string>
+    <string name="statistic_titile">Статистика</string>
+
+    <string name="watching">Смотрят</string>
+    <string name="completed">Просмотроенно</string>
+    <string name="onHold">Пауза</string>
+    <string name="dropped">Брошено</string>
+    <string name="planToWatch">Планируется</string>
+    <string name="news">Новости</string>
+    <string name="characters">Персонажи</string>
+    <string name="comments">Обзоры</string>
+
+    <string name="empty_comment">На данное произведение еще нет обзоров</string>
 
 </resources>

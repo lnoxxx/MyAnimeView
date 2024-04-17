@@ -40,6 +40,7 @@ android {
 }
 
 dependencies {
+    implementation ("com.github.furkanaskin:ClickablePieChart:1.0.9")
     //swipe to refresh
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     // lottie

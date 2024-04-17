@@ -65,5 +65,12 @@
     <color name="md_theme_dark_outlineVariant">#3F484A</color>
     <color name="md_theme_dark_scrim">#000000</color>
 
+    <color name="watching">#8BC34A</color>
+    <color name="completed">#4CAF50</color>
+    <color name="onHold">#FFC107</color>
+    <color name="dropped">#FF9800</color>
+    <color name="planToWatch">#00BCD4</color>
+    <color name="backgroundPieDark">#2D3131</color>
+    <color name="backgroundPieWhite">#EFF1F1</color>
 </resources>
 

@@ -34,12 +34,14 @@
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
         android:foreground="?attr/selectableItemBackground"
-        android:visibility="visible">
+        android:visibility="visible"
+        app:cardBackgroundColor="@color/black">
 
         <ImageView
             android:id="@+id/TrailerImageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:alpha="0.7"
             android:contentDescription="@string/animeimage_content_discript"
             android:scaleType="centerCrop"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />

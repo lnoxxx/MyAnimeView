@@ -6,13 +6,20 @@ import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.lnoxx.myanimeview.R
+import com.lnoxx.myanimeview.jikanApi.JikanMainClass
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.Anime
+import com.lnoxx.myanimeview.jikanApi.responseDataClasses.ReviewsResponse
+import com.lnoxx.myanimeview.ui.animeView.adapters.viewHolders.AdditionalViewHolder
 import com.lnoxx.myanimeview.ui.animeView.adapters.viewHolders.BaseInfoViewHolder
+import com.lnoxx.myanimeview.ui.animeView.adapters.viewHolders.CommentsViewHolder
 import com.lnoxx.myanimeview.ui.animeView.adapters.viewHolders.GenresViewHolder
 import com.lnoxx.myanimeview.ui.animeView.adapters.viewHolders.RatingViewHolder
-import com.lnoxx.myanimeview.ui.animeView.adapters.viewHolders.RelatedViewHolder
+import com.lnoxx.myanimeview.ui.animeView.adapters.viewHolders.StatisticViewHolder
 import com.lnoxx.myanimeview.ui.animeView.adapters.viewHolders.SynopsysViewHolder
 import com.lnoxx.myanimeview.ui.animeView.adapters.viewHolders.TrailerThemeViewHolder
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class AnimeViewAdapter(private val anime: Anime)
     : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -22,11 +29,6 @@ class AnimeViewAdapter(private val anime: Anime)
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.item_anime_view_base_info, parent, false)
                 BaseInfoViewHolder(view)
-            }
-            Related -> {
-                val view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_anime_view_related, parent, false)
-                RelatedViewHolder(view)
             }
             Synopsys -> {
                 val view = LayoutInflater.from(parent.context)
@@ -48,6 +50,21 @@ class AnimeViewAdapter(private val anime: Anime)
                     .inflate(R.layout.item_anime_view_trailer_theme, parent, false)
                 TrailerThemeViewHolder(view)
             }
+            Statistic -> {
+                val view = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_anime_view_statistic, parent, false)
+                StatisticViewHolder(view)
+            }
+            Additional -> {
+                val view = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_anime_view_additionally, parent, false)
+                AdditionalViewHolder(view)
+            }
+            Comments -> {
+                val view = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_anime_view_comments, parent, false)
+                CommentsViewHolder(view)
+            }
             else -> throw IllegalArgumentException("Illegal viewType")
         }
     }
@@ -65,19 +82,30 @@ class AnimeViewAdapter(private val anime: Anime)
             2 -> Rating
             3 -> Synopsys
             4 -> TrailerTheme
-            5 -> Related
+            5 -> Additional
+            6 -> Statistic
+            7 -> Comments
             else -> throw IllegalArgumentException("Illegal position")
         }
     }
 
     companion object{
-        const val typeCount = 6
+        const val typeCount = 8
 
         const val BaseInfo = 1
         const val Synopsys = 2
         const val Rating = 3
-        const val Related = 4
-        const val Genres = 5
-        const val TrailerTheme = 6
+        const val Genres = 4
+        const val TrailerTheme = 5
+        const val Statistic = 6
+        const val Additional = 7
+        const val Comments = 8
+    }
+
+    fun notifyCommentsLoaded(){
+        notifyItemChanged(7)
+    }
+    fun notifyStatisticLoaded(){
+        notifyItemChanged(6)
     }
 }

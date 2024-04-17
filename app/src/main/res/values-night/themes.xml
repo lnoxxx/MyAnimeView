@@ -99,7 +99,6 @@
     <!--BackgroundedTextView-->
     <style name="BackgroundedTextView" parent="MaterialAlertDialog.Material3.Body.Text">
         <item name="android:background">@drawable/anime_item_background_dark</item>
-        <item name="android:textColor">@color/md_theme_light_surface</item>
         <item name="android:paddingHorizontal">16dp</item>
         <item name="android:paddingVertical">8dp</item>
         <item name="android:drawableTint">@color/md_theme_dark_onSurfaceVariant</item>
@@ -124,5 +123,9 @@
     <!--BottomSheetBackground-->
     <style name="BottomSheetBackground">
         <item name="android:background">@drawable/bottom_sheet_background_dark</item>
+    </style>
+    <!--CommentBackground-->
+    <style name="CommentBackground">
+        <item name="android:background">@drawable/comment_background_dark</item>
     </style>
 </resources>
