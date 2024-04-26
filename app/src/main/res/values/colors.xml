@@ -4,7 +4,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="seed">#006971</color>
-    <color name="md_theme_light_primary">#006971</color>
+    <color name="md_theme_light_primary">#4A6365</color>
     <color name="md_theme_light_onPrimary">#FFFFFF</color>
     <color name="md_theme_light_primaryContainer">#84F3FF</color>
     <color name="md_theme_light_onPrimaryContainer">#002023</color>
@@ -34,7 +34,7 @@
     <color name="md_theme_light_surfaceTint">#006971</color>
     <color name="md_theme_light_outlineVariant">#BEC8C9</color>
     <color name="md_theme_light_scrim">#000000</color>
-    <color name="md_theme_dark_primary">#4DD9E6</color>
+    <color name="md_theme_dark_primary">#B1CBCE</color>
     <color name="md_theme_dark_onPrimary">#00363B</color>
     <color name="md_theme_dark_primaryContainer">#004F55</color>
     <color name="md_theme_dark_onPrimaryContainer">#84F3FF</color>

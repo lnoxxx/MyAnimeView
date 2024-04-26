@@ -1,7 +1,7 @@
 package com.lnoxx.myanimeview.jikanApi.responseDataClasses
 
 data class ReviewsResponse(
-    val data: MutableList<Review>,
+    val data: MutableList<Review>?,
     val pagination: Pagination
 )
 

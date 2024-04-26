@@ -47,6 +47,7 @@
     <string name="endings">Эндинги:</string>
     <string name="theme_text">Темы</string>
     <string name="anime_dont_have_themes">У произведения нет тем!</string>
+    <string name="anime_empty_openings">Нет опенингов!</string>
     <string name="no_studios">Нет информации</string>
     <string name="related_title">Связаное</string>
     <string name="date_title">Даты</string>
@@ -65,4 +66,63 @@
 
     <string name="empty_comment">На данное произведение еще нет обзоров</string>
 
+    <string name="empty_relations">Связанные с данным произведением работы отсутсвуют!</string>
+    <string name="no_characters_info">Не удалось получить информацию о персонажах произведения</string>
+    <string name="name_search">Название</string>
+
+    <string name="search_et_type">Тип</string>
+    <string name="tv">ТВ</string>
+    <string name="movie">Фильм</string>
+    <string name="ova">OVA</string>
+    <string name="special">Специальные</string>
+    <string name="none">Любой</string>
+
+    <string name="search_et_status">Статус</string>
+    <string name="airing">Онгоинги</string>
+    <string name="complete">Законченные</string>
+    <string name="upcoming">Анонсы</string>
+
+    <string name="age_rating">Возростной рейтинг</string>
+    <string name="sfw">SFW?</string>
+    <string name="no">Нет</string>
+    <string name="yes">Да</string>
+
+    <string name="sort_by">Соритровать по</string>
+    <string name="title_sort">По заголовку</string>
+    <string name="date_sort">По дате</string>
+    <string name="episodes_sort">По эпизодам</string>
+    <string name="score_sort">По оценкам</string>
+    <string name="rank_sort">По рейтингу</string>
+    <string name="popylarity_sort">По популярности</string>
+
+    <string name="sort_type">Тип сортировки</string>
+    <string name="desc">По убыванию</string>
+    <string name="asc">По возрастанию</string>
+    <string name="find">Найти</string>
+
+    <string name="G">G</string>
+    <string name="PG">PG</string>
+    <string name="PG13">PG13</string>
+    <string name="R17">R17</string>
+    <string name="R">R</string>
+    <string name="RX">RX</string>
+    <string name="content_discription">Текстовое поле</string>
+    <string name="filters">Фильтры</string>
+    <string name="search_history">История поиска</string>
+
+    <string name="choseGenre">Выберите жанры</string>
+    <string name="Genres">Жанры</string>
+    <string name="All">Все</string>
+    <string name="add">Добавить</string>
+
+    <array name="initial_slider_values">
+        <item>0</item>
+        <item>10</item>
+    </array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_result_label">Результаты поиска</string>
+    <string name="not_found_text">Не удалось ничего найти. Попробуйте изменить филтры.</string>
+    <string name="error_loading">Ошибка интернет соединения, повторите попытку позже.</string>
+    <string name="retry">Повторить</string>
 </resources>

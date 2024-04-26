@@ -9,7 +9,7 @@ import com.lnoxx.myanimeview.R
 import com.lnoxx.myanimeview.databinding.AdditionalRecItemBinding
 import com.lnoxx.myanimeview.ui.recommendation.adapters.additionalButtons.AdditionalButton
 
-class AdditionalButtonRvAdapter()
+class AdditionalButtonRvAdapter
     : RecyclerView.Adapter<AdditionalButtonRvAdapter.AdditionalButtonViewHolder>() {
 
     private val buttonList = AdditionalButton.entries

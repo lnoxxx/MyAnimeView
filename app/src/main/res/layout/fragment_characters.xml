@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.charactersFragment.CharactersFragment">
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/CharactersProgressIndicator"
+        style="@style/ProgressIndicatorStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:hideAnimationBehavior="outward"
+        app:showAnimationBehavior="inward">
+
+    </com.google.android.material.progressindicator.LinearProgressIndicator>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/CharactersRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadeScrollbars="true"
+        android:scrollbars="vertical"
+        tools:listitem="@layout/item_characters" />
+
+    <TextView
+        android:id="@+id/NoCharactersTextView"
+        style="@style/Material3TextWithDrawable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="64dp"
+        android:text="@string/no_characters_info"
+        android:textAlignment="center"
+        android:visibility="gone"
+        app:drawableTopCompat="@drawable/round_characters_54" />
+</FrameLayout>

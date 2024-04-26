@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.lnoxx.myanimeview.AnimeViewApplication
 import com.lnoxx.myanimeview.MainActivity
+import com.lnoxx.myanimeview.R
 import com.lnoxx.myanimeview.databinding.FragmentAnimeViewBinding
 import com.lnoxx.myanimeview.jikanApi.JikanMainClass
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.Anime
@@ -45,12 +47,22 @@ class AnimeViewFragment : Fragment() {
 
     private fun setContent(){
         CoroutineScope(Dispatchers.IO).launch {
-            val animeInCache = application.animeSessionCache[animeId]
+            val animeInCache = application.animeCache[animeId]
             val animeInfo: Anime = if (animeInCache != null){
                 animeInCache
             } else {
                 val response = JikanMainClass.getFullAnimeInfo(animeId)
-                application.animeSessionCache[response.mal_id] = response
+                if (response == null){
+                    withContext(Dispatchers.Main){
+                        Snackbar.make(requireView(),getText(R.string.error_loading), Snackbar.LENGTH_SHORT)
+                            .setAction(R.string.retry){
+                                setContent()
+                            }
+                            .show()
+                    }
+                    return@launch
+                }
+                application.animeCache[response.mal_id] = response
                 response
             }
             launch(Dispatchers.Main){
@@ -83,11 +95,11 @@ class AnimeViewFragment : Fragment() {
     }
 
     private fun setStatistic(anime: Anime){
-        var statistic = application.animeStatisticCache[anime.mal_id]
+        var statistic = application.statisticCache[anime.mal_id]
         if (statistic == null){
             CoroutineScope(Dispatchers.IO).launch {
                 statistic = JikanMainClass.getAnimeStatistic(anime.mal_id)
-                application.animeStatisticCache[anime.mal_id] = statistic!!
+                application.statisticCache[anime.mal_id] = statistic!!
                 withContext(Dispatchers.Main){
                     adapter.notifyStatisticLoaded()
                 }

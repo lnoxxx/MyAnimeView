@@ -15,13 +15,8 @@ import com.lnoxx.myanimeview.AnimeViewApplication
 import com.lnoxx.myanimeview.R
 import com.lnoxx.myanimeview.databinding.CustomItemLegendBinding
 import com.lnoxx.myanimeview.databinding.ItemAnimeViewStatisticBinding
-import com.lnoxx.myanimeview.jikanApi.JikanMainClass
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.Anime
 import com.lnoxx.myanimeview.ui.animeView.adapters.AnimeViewHolderInterface
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class StatisticViewHolder(view: View): RecyclerView.ViewHolder(view), AnimeViewHolderInterface {
     private val binding = ItemAnimeViewStatisticBinding.bind(view)
@@ -32,7 +27,7 @@ class StatisticViewHolder(view: View): RecyclerView.ViewHolder(view), AnimeViewH
     private val droppedText = itemView.context.getText(R.string.dropped).toString()
     private val planToWatch = itemView.context.getText(R.string.planToWatch).toString()
     override fun bind(anime: Anime) {
-        val statistic = application.animeStatisticCache[anime.mal_id] ?: return
+        val statistic = application.statisticCache[anime.mal_id] ?: return
         binding.progressCircle.hide()
         val sliceWatching = Slice(statistic.watching.toFloat(), R.color.watching, watchingText)
         val sliceCompleted = Slice(statistic.completed.toFloat(), R.color.completed, completedText)

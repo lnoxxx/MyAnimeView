@@ -64,7 +64,7 @@
         tools:text="Special" />
 
     <TextView
-        android:id="@+id/Episodes"
+        android:id="@+id/AnimeStatus"
         style="@style/BackgroundedTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -74,17 +74,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/AnimeType"
         app:layout_constraintTop_toTopOf="@+id/AnimeType"
-        tools:text="243 episodes" />
+        tools:text="2023" />
 
     <TextView
-        android:id="@+id/AnimeStatus"
+        android:id="@+id/Episodes"
         style="@style/BackgroundedTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="@+id/AnimeType"
         app:layout_constraintTop_toBottomOf="@+id/AnimeType"
-        tools:text="Currently Airing" />
+        tools:text="1234 ep" />
 
     <TextView
         android:id="@+id/AnimeAgeRaiting"
@@ -95,8 +95,8 @@
         android:layout_marginEnd="16dp"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/AnimeStatus"
-        app:layout_constraintTop_toTopOf="@+id/AnimeStatus"
+        app:layout_constraintStart_toEndOf="@+id/Episodes"
+        app:layout_constraintTop_toTopOf="@+id/Episodes"
         tools:text="PG-13" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

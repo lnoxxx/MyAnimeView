@@ -8,6 +8,7 @@ import com.lnoxx.myanimeview.databinding.ItemAnimeViewAdditionallyBinding
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.Anime
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.Entry
 import com.lnoxx.myanimeview.ui.animeView.adapters.AnimeViewHolderInterface
+import com.lnoxx.myanimeview.ui.charactersFragment.CharactersFragment
 import com.lnoxx.myanimeview.ui.related.RelatedFragment
 
 const val animeType = "anime"
@@ -26,7 +27,9 @@ class AdditionalViewHolder(view: View): RecyclerView.ViewHolder(view), AnimeView
                 .navigate(R.id.action_animeViewFragment_to_relatedFragment)
         }
         binding.charectersCardView.setOnClickListener {
-
+            CharactersFragment.animeId = anime.mal_id
+            Navigation.findNavController(itemView)
+                .navigate(R.id.action_animeViewFragment_to_charactersFragment)
         }
     }
 }

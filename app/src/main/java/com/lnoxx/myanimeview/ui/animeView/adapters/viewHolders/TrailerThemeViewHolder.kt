@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.lnoxx.myanimeview.R
@@ -35,13 +34,13 @@ class TrailerThemeViewHolder(view: View)
         }
         binding.ThemeCardView.setOnClickListener {
             if (anime.theme.endings.isEmpty() && anime.theme.openings.isEmpty()){
-                Toast.makeText(itemView.context,R.string.anime_dont_have_themes,Toast.LENGTH_LONG).show()
+                Toast.makeText(itemView.context,R.string.anime_dont_have_themes,Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             val context = itemView.context
             if (context is FragmentActivity){
                 val bottomSheet = ThemeBottomSheet(anime.theme)
-                bottomSheet.show(context.supportFragmentManager, ThemeBottomSheet.bottomSheetTag)
+                bottomSheet.show(context.supportFragmentManager, ThemeBottomSheet.BOTTOM_SHEET_TAG)
             }
         }
         binding.TrailerCardView.setOnClickListener {
@@ -70,15 +69,19 @@ class ThemeBottomSheet(private val themes: Theme): BottomSheetDialogFragment(){
         themes.openings.forEach { opening ->
             openingText += "$opening\n"
         }
+        if (themes.openings.isEmpty()) openingText +=
+            requireContext().getText(R.string.anime_empty_openings).toString() + "\n"
         var endingText = ""
-        themes.endings.forEach { opening ->
-            endingText += "$opening\n"
+        if (themes.endings.isNotEmpty()){
+            themes.endings.forEach { opening ->
+                endingText += "$opening\n"
+            }
         }
         val text = "${context?.getString(R.string.openings) ?: "Openings:"}\n$openingText" +
                 "\n${context?.getString(R.string.endings) ?: "Endings:"}\n$endingText"
         bottomSheetBinding.openingEndingsText.text = text
     }
     companion object{
-        const val bottomSheetTag = "ThemeBottomSheet"
+        const val BOTTOM_SHEET_TAG = "ThemeBottomSheet"
     }
 }

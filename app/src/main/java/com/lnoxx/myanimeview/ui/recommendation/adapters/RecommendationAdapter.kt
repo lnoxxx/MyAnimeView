@@ -4,10 +4,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.lnoxx.myanimeview.R
 import com.lnoxx.myanimeview.databinding.ItemRecommendationAnimeBinding
 import com.lnoxx.myanimeview.recomendationDatabase.RecommendationCache
+import com.lnoxx.myanimeview.ui.animeView.AnimeViewFragment
 import com.squareup.picasso.Picasso
 
 class RecommendationAdapter(private var animeList: MutableList<RecommendationCache>)
@@ -21,6 +24,11 @@ class RecommendationAdapter(private var animeList: MutableList<RecommendationCac
             }
             binding.animeRecommendationName.text = anime.title
             itemView.setOnClickListener {
+            }
+            itemView.setOnClickListener {
+                AnimeViewFragment.animeId = anime.mal_id
+                Navigation.findNavController(itemView)
+                    .navigate(R.id.action_navigation_recommendation_to_animeViewFragment)
             }
         }
     }

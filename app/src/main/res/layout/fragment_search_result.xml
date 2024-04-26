@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.search_result.SearchResultFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/searchResultRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/searchProgressIndicator"
+        style="@style/ProgressIndicatorStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:hideAnimationBehavior="outward"
+        app:showAnimationBehavior="inward">
+
+    </com.google.android.material.progressindicator.LinearProgressIndicator>
+
+    <TextView
+        android:id="@+id/notFoundText"
+        style="@style/Material3TextWithDrawable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="64dp"
+        android:text="@string/not_found_text"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:visibility="gone"
+        app:drawableTopCompat="@drawable/round_error_outline_24" />
+
+</FrameLayout>

@@ -9,15 +9,15 @@ data class Anime(
     val url: String,
     val images: Images,
     val trailer: Trailer?,
-    val title: String,
-    val type: String,
+    val title: String?,
+    val type: String?,
     val source: String,
     val episodes: Int,
-    val status: String,
+    val status: String?,
     val airing: Boolean,
     val aired: Aired,
     val duration: String,
-    val rating: String,
+    val rating: String?,
     val score: Double?,
     val scored_by: Int?,
     val rank: Int?,
@@ -50,7 +50,7 @@ data class Images(
 data class Image(
     val image_url: String,
     val small_image_url: String,
-    val large_image_url: String
+    val large_image_url: String?
 )
 
 data class Trailer(

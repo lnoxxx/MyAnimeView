@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.lnoxx.myanimeview.jikanApi.enumClasses.TopFilter
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.Anime
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.AnimeStatisticData
+import com.lnoxx.myanimeview.jikanApi.responseDataClasses.CharactersResponse
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.ReviewsResponse
 import com.lnoxx.myanimeview.recomendationDatabase.RecommendationDatabase
 import com.lnoxx.myanimeview.recomendationDatabase.RecommendationUpdateTime
@@ -16,12 +17,16 @@ import kotlinx.coroutines.launch
 import java.util.Calendar
 
 class AnimeViewApplication: Application() {
+    //кэш
     val commentsCache = mutableMapOf<Int, ReviewsResponse>()
-    val animeSessionCache = mutableMapOf<Int, Anime>()
-    val animeStatisticCache = mutableMapOf<Int, AnimeStatisticData>()
+    val animeCache = mutableMapOf<Int, Anime>()
+    val statisticCache = mutableMapOf<Int, AnimeStatisticData>()
+    val charactersCache = mutableMapOf<Int, CharactersResponse>()
+    //текущее время
     private val calendar = Calendar.getInstance()
     val currentDay = calendar.get(Calendar.DAY_OF_MONTH)
     val currentMount = calendar.get(Calendar.MONTH)
+    //бд
     val topsTypeDatabase by lazy {
         Room.databaseBuilder(
             this,
@@ -36,6 +41,7 @@ class AnimeViewApplication: Application() {
             "RecommendationDatabase"
         ).build()
     }
+    // иницилизация времени в бд
     override fun onCreate() {
         super.onCreate()
         CoroutineScope(Dispatchers.IO).launch {
@@ -50,19 +56,19 @@ class AnimeViewApplication: Application() {
             if (topCnt == 0){
                 topsTypeDatabase.getTopUpdateTimeDao().insert(
                     TopUpdateTime(
-                    TopFilter.AIRING.filterToQuery(),0,0)
+                    TopFilter.AIRING.query,0,0)
                 )
                 topsTypeDatabase.getTopUpdateTimeDao().insert(
                     TopUpdateTime(
-                    TopFilter.FAVORITE.filterToQuery(),0,0)
+                    TopFilter.FAVORITE.query,0,0)
                 )
                 topsTypeDatabase.getTopUpdateTimeDao().insert(
                     TopUpdateTime(
-                    TopFilter.BYPOPULARITY.filterToQuery(),0,0)
+                    TopFilter.BYPOPULARITY.query,0,0)
                 )
                 topsTypeDatabase.getTopUpdateTimeDao().insert(
                     TopUpdateTime(
-                    TopFilter.UPCOMING .filterToQuery(),0,0)
+                    TopFilter.UPCOMING.query,0,0)
                 )
             }
         }

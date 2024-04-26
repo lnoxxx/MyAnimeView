@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.lnoxx.myanimeview.AnimeViewApplication
 import com.lnoxx.myanimeview.R
 import com.lnoxx.myanimeview.databinding.FragmentTopListBinding
@@ -18,7 +19,6 @@ import com.lnoxx.myanimeview.topsDatabase.TopUpdateTime
 import com.lnoxx.myanimeview.topsDatabase.TopsTypeDatabase
 import com.lnoxx.myanimeview.topsDatabase.animeListToTopList
 import com.lnoxx.myanimeview.ui.animeView.AnimeViewFragment
-import com.lnoxx.myanimeview.ui.errorAlertDialog.ErrorAlertDialog
 import com.lnoxx.myanimeview.ui.tops.adapters.TopListAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -37,8 +37,6 @@ class TopListFragment : Fragment(), TopListAdapter.AnimeClickListener {
 
     var hasNextPage = true
     var isUpdating = false
-    private var dialogShowed = false
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,25 +92,26 @@ class TopListFragment : Fragment(), TopListAdapter.AnimeClickListener {
         binding.refreshLayout.isRefreshing = true
         isUpdating = true
         CoroutineScope(Dispatchers.IO).launch {
-            try {
-                currentViewModel.currentPage++
-                val animeTop = JikanMainClass.getAnimeTop(topFilter, currentViewModel.currentPage)
-                hasNextPage = animeTop.pagination.has_next_page
-                val topList = animeListToTopList(animeTop.data, topFilter)
+            currentViewModel.currentPage++
+            val animeTop = JikanMainClass.getAnimeTop(topFilter, currentViewModel.currentPage)
+            if (animeTop == null){
                 withContext(Dispatchers.Main){
-                    adapter.addInList(topList)
-                    isUpdating = false
-                    binding.refreshLayout.isRefreshing = false
+                    Snackbar.make(requireView(),getText(R.string.error_loading),Snackbar.LENGTH_SHORT)
+                        .setAction(R.string.retry){
+                            onAddMore()
+                        }
+                        .show()
                 }
-            }catch (e: Exception){
-                withContext(Dispatchers.Main){
-                    if (!dialogShowed){
-                        ErrorAlertDialog(requireContext(), e.message, getString(R.string.ok)).showDialog()
-                        dialogShowed = true
-                    }
-                    binding.refreshLayout.isRefreshing = false
-                    isUpdating = false
-                }
+                isUpdating = false
+                binding.refreshLayout.isRefreshing = false
+                return@launch
+            }
+            hasNextPage = animeTop.pagination.has_next_page
+            val topList = animeListToTopList(animeTop.data, topFilter)
+            withContext(Dispatchers.Main){
+                adapter.addInList(topList)
+                isUpdating = false
+                binding.refreshLayout.isRefreshing = false
             }
         }
     }
@@ -137,42 +136,33 @@ class TopListFragment : Fragment(), TopListAdapter.AnimeClickListener {
     }
 
     private suspend fun setContentFromApi(){
-        try {
-            val animeTop = JikanMainClass.getAnimeTop(topFilter)
-            val topList = animeListToTopList(animeTop.data, topFilter)
-            cacheAnimeTop(topList)
+        val animeTop = JikanMainClass.getAnimeTop(topFilter)
+        if (animeTop == null){
             withContext(Dispatchers.Main){
-                adapter.setList(topList)
-                currentViewModel.currentList = topList
-                binding.refreshLayout.isRefreshing = false
+                Snackbar.make(requireView(),getText(R.string.error_loading),Snackbar.LENGTH_SHORT)
+                    .setAction(R.string.retry){
+                        this.launch { setContentFromApi() }
+                    }
+                    .show()
             }
-        }catch (e: Exception){
-            withContext(Dispatchers.Main){
-                if (!dialogShowed){
-                    ErrorAlertDialog(requireContext(), e.message, getString(R.string.ok)).showDialog()
-                    dialogShowed = true
-                }
-                binding.refreshLayout.isRefreshing = false
-            }
+            binding.refreshLayout.isRefreshing = false
+            return
+        }
+        val topList = animeListToTopList(animeTop.data, topFilter)
+        cacheAnimeTop(topList)
+        withContext(Dispatchers.Main){
+            adapter.setList(topList)
+            currentViewModel.currentList = topList
+            binding.refreshLayout.isRefreshing = false
         }
     }
 
     private suspend fun setContentFromDatabase(){
-        try {
-            val topList = topsTypeDatabase.getTopsAnimeDao().getAnimeInTop(topFilter)
-            withContext(Dispatchers.Main){
-                adapter.setList(topList)
-                currentViewModel.currentList = topList
-                binding.refreshLayout.isRefreshing = false
-            }
-        }catch (e: Exception){
-            withContext(Dispatchers.Main){
-                if (!dialogShowed){
-                    ErrorAlertDialog(requireContext(), e.message, getString(R.string.ok)).showDialog()
-                    dialogShowed = true
-                }
-                binding.refreshLayout.isRefreshing = false
-            }
+        val topList = topsTypeDatabase.getTopsAnimeDao().getAnimeInTop(topFilter)
+        withContext(Dispatchers.Main){
+            adapter.setList(topList)
+            currentViewModel.currentList = topList
+            binding.refreshLayout.isRefreshing = false
         }
     }
 

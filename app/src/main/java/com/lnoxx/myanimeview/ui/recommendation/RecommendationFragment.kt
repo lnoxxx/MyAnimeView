@@ -1,7 +1,6 @@
 package com.lnoxx.myanimeview.ui.recommendation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -15,6 +14,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.lnoxx.myanimeview.AnimeViewApplication
 import com.lnoxx.myanimeview.R
 import com.lnoxx.myanimeview.databinding.FragmentRecommendationBinding
@@ -25,7 +25,6 @@ import com.lnoxx.myanimeview.recomendationDatabase.RecommendationUpdateTime
 import com.lnoxx.myanimeview.recomendationDatabase.ReviewCache
 import com.lnoxx.myanimeview.recomendationDatabase.responseToRecommendationCacheList
 import com.lnoxx.myanimeview.recomendationDatabase.responseToReviewCacheList
-import com.lnoxx.myanimeview.ui.errorAlertDialog.ErrorAlertDialog
 import com.lnoxx.myanimeview.ui.recommendation.adapters.AdditionalButtonRvAdapter
 import com.lnoxx.myanimeview.ui.recommendation.adapters.RecommendationAdapter
 import com.lnoxx.myanimeview.ui.recommendation.adapters.ReviewRvAdapter
@@ -41,8 +40,6 @@ class RecommendationFragment : Fragment() {
     private lateinit var adapter: ReviewRvAdapter
     private lateinit var bannerAdapter: RecommendationAdapter
     private lateinit var application: AnimeViewApplication
-
-    private var dialogShowed = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -120,36 +117,25 @@ class RecommendationFragment : Fragment() {
     }
 
     private suspend fun setRecommendationFromApi(){
-        try {
-            val response = JikanMainClass.getAnimeRecommendation()
-            val recommendationList = responseToRecommendationCacheList(response, recommendationCount)
-            cacheRecommendation(recommendationList)
+        val response = JikanMainClass.getAnimeRecommendation()
+        if (response == null){
             withContext(Dispatchers.Main){
-                bannerAdapter.setAnime(recommendationList)
+                Snackbar.make(requireView(),getText(R.string.error_loading), Snackbar.LENGTH_SHORT)
+                    .show()
             }
-        }catch (e: Exception){
-            withContext(Dispatchers.Main){
-                if (!dialogShowed){
-                    ErrorAlertDialog(requireContext(), e.message, getString(R.string.ok)).showDialog()
-                    dialogShowed = true
-                }
-            }
+            return
+        }
+        val recommendationList = responseToRecommendationCacheList(response, recommendationCount)
+        cacheRecommendation(recommendationList)
+        withContext(Dispatchers.Main){
+            bannerAdapter.setAnime(recommendationList)
         }
     }
 
     private suspend fun setRecommendationFromDatabase(){
-        try {
-            val recommendationList = recommendationDatabase.getRecommendationDao().getRecommendation()
-            withContext(Dispatchers.Main){
-                bannerAdapter.setAnime(recommendationList)
-            }
-        }catch (e: Exception){
-            withContext(Dispatchers.Main){
-                if (!dialogShowed){
-                    ErrorAlertDialog(requireContext(), e.message, getString(R.string.ok)).showDialog()
-                    dialogShowed = true
-                }
-            }
+        val recommendationList = recommendationDatabase.getRecommendationDao().getRecommendation()
+        withContext(Dispatchers.Main){
+            bannerAdapter.setAnime(recommendationList)
         }
     }
 
@@ -177,40 +163,27 @@ class RecommendationFragment : Fragment() {
     }
 
     private suspend fun setReviewContentFromApi(){
-        try {
-            val reviewResponse = JikanMainClass.getReviewTop()
-            val reviewList = responseToReviewCacheList(reviewResponse)
-            cacheReviewList(reviewList)
+        val reviewResponse = JikanMainClass.getReviewTop()
+        if (reviewResponse == null){
             withContext(Dispatchers.Main){
-                adapter.setReview(reviewList)
-                binding.reviewSwipeRefreshLayout.isRefreshing = false
+                Snackbar.make(requireView(),getText(R.string.error_loading),Snackbar.LENGTH_SHORT)
+                    .show()
             }
-        }catch (e: Exception){
-            withContext(Dispatchers.Main){
-                if (!dialogShowed){
-                    ErrorAlertDialog(requireContext(), e.message, getString(R.string.ok)).showDialog()
-                    dialogShowed = true
-                }
-                binding.reviewSwipeRefreshLayout.isRefreshing = false
-            }
+            return
+        }
+        val reviewList = responseToReviewCacheList(reviewResponse)
+        cacheReviewList(reviewList)
+        withContext(Dispatchers.Main){
+            adapter.setReview(reviewList)
+            binding.reviewSwipeRefreshLayout.isRefreshing = false
         }
     }
 
     private suspend fun setReviewContentFromDatabase(){
-        try {
-            val reviewList = recommendationDatabase.getReviewDao().getReview()
-            withContext(Dispatchers.Main){
-                adapter.setReview(reviewList)
-                binding.reviewSwipeRefreshLayout.isRefreshing = false
-            }
-        }catch (e: Exception){
-            withContext(Dispatchers.Main){
-                if (!dialogShowed){
-                    ErrorAlertDialog(requireContext(), e.message, getString(R.string.ok)).showDialog()
-                    dialogShowed = true
-                }
-                binding.reviewSwipeRefreshLayout.isRefreshing = false
-            }
+        val reviewList = recommendationDatabase.getReviewDao().getReview()
+        withContext(Dispatchers.Main){
+            adapter.setReview(reviewList)
+            binding.reviewSwipeRefreshLayout.isRefreshing = false
         }
     }
 

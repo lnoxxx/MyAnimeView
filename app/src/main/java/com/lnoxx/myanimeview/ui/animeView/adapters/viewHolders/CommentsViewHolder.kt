@@ -3,6 +3,7 @@ package com.lnoxx.myanimeview.ui.animeView.adapters.viewHolders
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +16,7 @@ import com.lnoxx.myanimeview.jikanApi.responseDataClasses.Review
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.ReviewsResponse
 import com.lnoxx.myanimeview.ui.allComments.AllCommentsFragment
 import com.lnoxx.myanimeview.ui.animeView.adapters.AnimeViewHolderInterface
+import com.lnoxx.myanimeview.ui.reviewBottomSheet.ReviewBottomSheet
 import com.squareup.picasso.Picasso
 
 class CommentsViewHolder(view: View): RecyclerView.ViewHolder(view), AnimeViewHolderInterface {
@@ -28,7 +30,6 @@ class CommentsViewHolder(view: View): RecyclerView.ViewHolder(view), AnimeViewHo
         if (comments != null){
             binding.CommentsLoadingIndicator.hide()
             binding.commentsRecyclerView.adapter = CommentsRecyclerViewAdapter(comments, true)
-
             binding.MoreCommentsButton.setOnClickListener {
                 AllCommentsFragment.animeID = anime.mal_id
                 AllCommentsFragment.comments = comments
@@ -42,7 +43,7 @@ class CommentsViewHolder(view: View): RecyclerView.ViewHolder(view), AnimeViewHo
 class CommentsRecyclerViewAdapter(private val comments: ReviewsResponse,
                                   private val preview: Boolean,)
     : RecyclerView.Adapter<CommentsRecyclerViewAdapter.CommentItemViewHolder>(){
-    private val PREVIEW_CONT = 3
+    private val previewCount = 3
     private var isEmpty = false
     class CommentItemViewHolder(view: View): RecyclerView.ViewHolder(view){
         private val binding = ItemCommentBinding.bind(view)
@@ -50,6 +51,13 @@ class CommentsRecyclerViewAdapter(private val comments: ReviewsResponse,
             if (review != null){
                 Picasso.get().load(review.user.images.jpg.image_url).into(binding.userImageComment)
                 binding.userCommentText.text = review.review
+                itemView.setOnClickListener {
+                    val context = itemView.context
+                    if (context is FragmentActivity){
+                        val reviewSheet = ReviewBottomSheet(review)
+                        reviewSheet.show(context.supportFragmentManager, ReviewBottomSheet.BOTTOM_SHEET_TAG)
+                    }
+                }
             } else {
                 Picasso.get().load(R.drawable.no_comments_profile_photo_360).into(binding.userImageComment)
                 binding.userCommentText.text = itemView.context.getText(R.string.empty_comment)
@@ -64,7 +72,11 @@ class CommentsRecyclerViewAdapter(private val comments: ReviewsResponse,
     }
 
     override fun getItemCount(): Int {
-        return if(comments.data.size < PREVIEW_CONT){
+        if (comments.data == null){
+            isEmpty = true
+            return 1
+        }
+        return if(comments.data.size < previewCount){
             if (comments.data.isEmpty()) {
                 isEmpty = true
                 1
@@ -72,21 +84,21 @@ class CommentsRecyclerViewAdapter(private val comments: ReviewsResponse,
                 comments.data.size
             }
         }else{
-            if(preview) PREVIEW_CONT else comments.data.size
+            if(preview) previewCount else comments.data.size
         }
     }
 
-    fun addComments(newComments: ReviewsResponse){
-        val oldSize = comments.data.size
-        comments.data.addAll(newComments.data)
-        notifyItemRangeInserted(oldSize, comments.data.size)
-    }
+//    fun addComments(newComments: ReviewsResponse){
+//        val oldSize = comments.data.size
+//        comments.data.addAll(newComments.data)
+//        notifyItemRangeInserted(oldSize, comments.data.size)
+//    }
 
     override fun onBindViewHolder(holder: CommentItemViewHolder, position: Int) {
         if (isEmpty) {
             holder.bind(null)
         } else {
-            holder.bind(comments.data[position])
+            holder.bind(comments.data?.get(position))
         }
     }
 }

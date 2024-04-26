@@ -57,7 +57,7 @@ fun responseToRecommendationCacheList(response: RecommendationAnimeResponse, cou
 
 fun responseToReviewCacheList(response: ReviewsResponse): MutableList<ReviewCache>{
     val reviewList = mutableListOf<ReviewCache>()
-    response.data.forEach {review ->
+    response.data?.forEach { review ->
         reviewList.add(
             ReviewCache(
                 review.mal_id,

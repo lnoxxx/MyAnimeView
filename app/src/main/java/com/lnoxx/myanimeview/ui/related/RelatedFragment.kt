@@ -22,11 +22,15 @@ class RelatedFragment : Fragment() {
         if (currentFragmentRelatedData.isEmpty()){
             currentFragmentRelatedData.addAll(relatedData)
         }
+        if (currentFragmentRelatedData.isEmpty())
+            binding.EmptyRelationsTextView.visibility = View.GONE
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (currentFragmentRelatedData.isEmpty())
+            binding.EmptyRelationsTextView.visibility = View.VISIBLE
         binding.RelatedRecyclerView.layoutManager =
             StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
         binding.RelatedRecyclerView.adapter = RelatedAdapter(currentFragmentRelatedData)

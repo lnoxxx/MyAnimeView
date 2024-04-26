@@ -23,7 +23,6 @@ class GenresViewHolder(view: View): RecyclerView.ViewHolder(view), AnimeViewHold
         val studio = if(anime.studios.isNotEmpty()) anime.studios[0] else null
         binding.GenresRecyclerView.adapter = GenresRecyclerViewAdapter(genresList, studio)
     }
-
     inner class GenresRecyclerViewAdapter(private val genres: List<Genre>,
                                           private val studio: Studio?,):
         RecyclerView.Adapter<RecyclerView.ViewHolder>(){
@@ -60,11 +59,15 @@ class GenresViewHolder(view: View): RecyclerView.ViewHolder(view), AnimeViewHold
                 else -> throw IllegalArgumentException("Illegal viewType")
             }
         }
-        override fun getItemCount() = genres.size + 1
+        override fun getItemCount() = genres.size + if(studio != null) 1 else 0
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
             when(holder){
                 is GenreItemViewHolder -> {
-                    holder.bind(genres[position-1])
+                    if (studio != null){
+                        holder.bind(genres[position-1])
+                    } else {
+                        holder.bind(genres[position])
+                    }
                 }
                 is StudioItemViewHolder -> {
                     holder.bind(studio)
@@ -72,9 +75,13 @@ class GenresViewHolder(view: View): RecyclerView.ViewHolder(view), AnimeViewHold
             }
         }
         override fun getItemViewType(position: Int): Int {
-            return when(position){
-                0 -> typeStudio
-                else -> typeGenre
+            return if (studio != null){
+                when(position){
+                    0 -> typeStudio
+                    else -> typeGenre
+                }
+            } else {
+                typeGenre
             }
         }
     }
