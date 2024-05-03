@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -40,6 +41,11 @@ android {
 }
 
 dependencies {
+    //firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth")
+    //pieChart
     implementation ("com.github.furkanaskin:ClickablePieChart:1.0.9")
     //swipe to refresh
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")

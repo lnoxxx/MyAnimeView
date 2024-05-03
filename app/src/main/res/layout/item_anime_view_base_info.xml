@@ -55,48 +55,63 @@
 
     <TextView
         android:id="@+id/AnimeType"
-        style="@style/BackgroundedTextView"
+        style="@style/Material3TextWithDrawable"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:drawablePadding="4dp"
+        app:drawableStartCompat="@drawable/round_auto_awesome_motion_24"
+        app:layout_constraintEnd_toEndOf="@+id/AnimeTitle"
         app:layout_constraintStart_toStartOf="@+id/AnimeTitle"
-        app:layout_constraintTop_toBottomOf="@+id/AnimeTitle"
+        app:layout_constraintTop_toBottomOf="@+id/divider7"
         tools:text="Special" />
 
     <TextView
         android:id="@+id/AnimeStatus"
-        style="@style/BackgroundedTextView"
+        style="@style/Material3TextWithDrawable"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/AnimeType"
-        app:layout_constraintTop_toTopOf="@+id/AnimeType"
-        tools:text="2023" />
+        android:drawablePadding="4dp"
+        app:drawableStartCompat="@drawable/baseline_calendar_today_24"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="@+id/AnimeAgeRaiting"
+        app:layout_constraintStart_toStartOf="@+id/AnimeAgeRaiting"
+        app:layout_constraintTop_toBottomOf="@+id/AnimeAgeRaiting"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="Currently airing" />
 
     <TextView
         android:id="@+id/Episodes"
-        style="@style/BackgroundedTextView"
-        android:layout_width="wrap_content"
+        style="@style/Material3TextWithDrawable"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:drawablePadding="4dp"
+        app:drawableStartCompat="@drawable/round_live_tv_24"
+        app:layout_constraintEnd_toEndOf="@+id/AnimeType"
         app:layout_constraintStart_toStartOf="@+id/AnimeType"
         app:layout_constraintTop_toBottomOf="@+id/AnimeType"
         tools:text="1234 ep" />
 
     <TextView
         android:id="@+id/AnimeAgeRaiting"
-        style="@style/BackgroundedTextView"
+        style="@style/Material3TextWithDrawable"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Episodes"
-        app:layout_constraintTop_toTopOf="@+id/Episodes"
+        android:drawablePadding="4dp"
+        app:drawableStartCompat="@drawable/round_18_up_rating_24"
+        app:layout_constraintEnd_toEndOf="@+id/Episodes"
+        app:layout_constraintStart_toStartOf="@+id/Episodes"
+        app:layout_constraintTop_toBottomOf="@+id/Episodes"
         tools:text="PG-13" />
+
+    <View
+        android:id="@+id/divider7"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="@+id/AnimeTitle"
+        app:layout_constraintStart_toStartOf="@+id/AnimeTitle"
+        app:layout_constraintTop_toBottomOf="@+id/AnimeTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

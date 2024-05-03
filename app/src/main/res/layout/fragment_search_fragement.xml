@@ -1,11 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.search.SearchFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView8"
+            style="@style/CardViewBackground"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:cardCornerRadius="32dp"
+            app:layout_constraintEnd_toStartOf="@+id/searchButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/queryEditText"
+                style="@style/Material3TextWithDrawable"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                android:backgroundTint="@android:color/transparent"
+                android:drawableStart="@drawable/round_search_24"
+                android:drawablePadding="4dp"
+                android:hint="@string/search_title"
+                android:singleLine="true"
+                android:textSize="16sp">
+
+            </com.google.android.material.textfield.TextInputEditText>
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/searchButton"
+            style="@style/primaryButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="8dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/find"
+            app:icon="@drawable/round_search_24"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:background="?android:attr/listDivider" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,273 +72,173 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/typeLayout"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="8dp"
+                android:hint="@string/search_et_type">
+
+                <AutoCompleteTextView
+                    android:id="@+id/typeText"
+                    style="@style/DropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:text="@string/none"
+                    app:simpleItemLayout="@layout/item_dropdown"
+                    tools:ignore="LabelFor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/statusLayout"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="8dp"
+                android:hint="@string/search_et_status">
+
+                <AutoCompleteTextView
+                    android:id="@+id/statusText"
+                    style="@style/DropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:text="@string/none"
+                    app:simpleItemLayout="@layout/item_dropdown"
+                    tools:ignore="LabelFor" />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
                 android:layout_marginTop="8dp">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView8"
-                    style="@style/CardViewBackground"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/sortTypeLayout"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    app:cardCornerRadius="8dp"
-                    app:layout_constraintEnd_toStartOf="@+id/searchButton"
+                    android:layout_marginTop="8dp"
+                    android:hint="@string/sort_type"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sortByLayout">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/sortTypeText"
+                        style="@style/DropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:text="@string/desc"
+                        app:simpleItemLayout="@layout/item_dropdown"
+                        tools:ignore="LabelFor" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/sortByLayout"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/sort_by"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/queryEditText"
-                        style="@style/Material3TextWithDrawable"
+                    <AutoCompleteTextView
+                        android:id="@+id/sortByText"
+                        style="@style/DropdownMenu"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="8dp"
-                        android:backgroundTint="@android:color/transparent"
-                        android:drawableStart="@drawable/round_search_24"
-                        android:drawablePadding="4dp"
-                        android:hint="@string/search_title"
-                        android:singleLine="true"
-                        android:textSize="16sp">
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:text="@string/score_sort"
+                        app:simpleItemLayout="@layout/item_dropdown"
+                        tools:ignore="LabelFor" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    </com.google.android.material.textfield.TextInputEditText>
-                </androidx.cardview.widget.CardView>
-
-                <Button
-                    android:id="@+id/searchButton"
-                    style="@style/primaryButtonStyle"
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/sfwSwitch"
+                    style="@style/SwitchStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_marginEnd="8dp"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:text="@string/find"
-                    app:icon="@drawable/round_search_24"
-                    app:layout_constraintBottom_toBottomOf="@+id/cardView8"
+                    android:text="@string/sfw"
+                    app:layout_constraintBottom_toBottomOf="@+id/ratingLayout"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="@+id/ratingLayout"
+                    app:switchPadding="8dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ratingLayout"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:hint="@string/age_rating"
+                    app:layout_constraintEnd_toStartOf="@+id/sfwSwitch"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sortTypeLayout">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/ratingText"
+                        style="@style/DropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:text="@string/none"
+                        app:simpleItemLayout="@layout/item_dropdown"
+                        tools:ignore="LabelFor" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.slider.RangeSlider
+                    android:id="@+id/rangeSlider"
+                    style="@style/SliderTheme"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:stepSize="1"
+                    android:valueFrom="0"
+                    android:valueTo="10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView9"
+                    app:values="@array/initial_slider_values" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    style="@style/Material3TextWithDrawable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/raiting_titile"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ratingLayout" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <View
-                android:id="@+id/divider11"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="8dp"
-                android:background="?android:attr/listDivider" />
-
-            <androidx.cardview.widget.CardView
-                style="@style/CardViewBackground"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/genresRecyclreView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_marginHorizontal="8dp">
+                tools:itemCount="1"
+                tools:listitem="@layout/item_genre_search" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView8"
-                        style="@style/Material3TitleWithDrawable"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/filters" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/typeLayout"
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="8dp"
-                        android:layout_marginTop="8dp"
-                        android:hint="@string/search_et_type">
-
-                        <AutoCompleteTextView
-                            android:id="@+id/typeText"
-                            style="@style/DropdownMenu"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="none"
-                            android:text="@string/none"
-                            app:simpleItemLayout="@layout/item_dropdown"
-                            tools:ignore="LabelFor" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/statusLayout"
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="8dp"
-                        android:layout_marginTop="8dp"
-                        android:hint="@string/search_et_status">
-
-                        <AutoCompleteTextView
-                            android:id="@+id/statusText"
-                            style="@style/DropdownMenu"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="none"
-                            android:text="@string/none"
-                            app:simpleItemLayout="@layout/item_dropdown"
-                            tools:ignore="LabelFor" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="8dp"
-                        android:layout_marginTop="8dp">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/sortTypeLayout"
-                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:hint="@string/sort_type"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/sortByLayout">
-
-                            <AutoCompleteTextView
-                                android:id="@+id/sortTypeText"
-                                style="@style/DropdownMenu"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:inputType="none"
-                                android:text="@string/desc"
-                                app:simpleItemLayout="@layout/item_dropdown"
-                                tools:ignore="LabelFor" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/sortByLayout"
-                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/sort_by"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                            <AutoCompleteTextView
-                                android:id="@+id/sortByText"
-                                style="@style/DropdownMenu"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:inputType="none"
-                                android:text="@string/score_sort"
-                                app:simpleItemLayout="@layout/item_dropdown"
-                                tools:ignore="LabelFor" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.materialswitch.MaterialSwitch
-                            android:id="@+id/sfwSwitch"
-                            style="@style/SwitchStyle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="0dp"
-                            android:text="@string/sfw"
-                            app:layout_constraintBottom_toBottomOf="@+id/ratingLayout"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/ratingLayout"
-                            app:switchPadding="8dp" />
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/ratingLayout"
-                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:hint="@string/age_rating"
-                            app:layout_constraintEnd_toStartOf="@+id/sfwSwitch"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/sortTypeLayout">
-
-                            <AutoCompleteTextView
-                                android:id="@+id/ratingText"
-                                style="@style/DropdownMenu"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:inputType="none"
-                                android:text="@string/none"
-                                app:simpleItemLayout="@layout/item_dropdown"
-                                tools:ignore="LabelFor" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.slider.RangeSlider
-                            android:id="@+id/rangeSlider"
-                            style="@style/SliderTheme"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:valueFrom="0"
-                            android:valueTo="10"
-                            android:stepSize="1"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView9"
-                            app:values="@array/initial_slider_values" />
-
-                        <TextView
-                            android:id="@+id/textView9"
-                            style="@style/Material3TextWithDrawable"
-                            android:layout_width="wrap_content"
-                            android:layout_height="0dp"
-                            android:layout_marginTop="8dp"
-                            android:gravity="center_vertical"
-                            android:text="@string/raiting_titile"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/ratingLayout" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <View
-                        android:id="@+id/divider7"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginVertical="4dp"
-                        android:background="?android:attr/listDivider" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/textView11"
-                            style="@style/Material3TitleWithDrawable"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/Genres" />
-
-                        <Button
-                            android:id="@+id/addGenreButton"
-                            style="@style/primaryButtonStyle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/add" />
-                    </LinearLayout>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/genresRecyclreView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        tools:itemCount="1"
-                        tools:listitem="@layout/item_genre_search" />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            <Button
+                android:id="@+id/addGenreButton"
+                style="@style/primaryButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginHorizontal="8dp"
+                android:text="@string/add_genre" />
 
         </LinearLayout>
     </ScrollView>
 
-</FrameLayout>
+</LinearLayout>

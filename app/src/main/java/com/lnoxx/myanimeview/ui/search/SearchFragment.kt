@@ -31,6 +31,7 @@ class SearchFragment : Fragment(), GenreListAdapter.SelectedGenresRv {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setDropDownItems()
         binding.rangeSlider.addOnChangeListener { rangeSlider, fl, b ->
             val values = rangeSlider.values

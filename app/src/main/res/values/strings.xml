@@ -125,4 +125,37 @@
     <string name="not_found_text">Не удалось ничего найти. Попробуйте изменить филтры.</string>
     <string name="error_loading">Ошибка интернет соединения, повторите попытку позже.</string>
     <string name="retry">Повторить</string>
+    <string name="add_genre">Добавить жанры</string>
+    <string name="regustration">Регистрация</string>
+    <string name="Login">Почта</string>
+    <string name="Password">Пароль</string>
+    <string name="Paswword_repeat">Повторите пароль</string>
+    <string name="Register">Зарегестрироваться</string>
+    <string name="alredy_have_acccount">Уже есть аккаунт? <u>Войти</u>. </string>
+    <string name="registration_hint_u">Еще нет аккаунта? <u>Зарегестрироваться</u></string>
+    <string name="log_in">Войти</string>
+    <string name="sing_in_hint">Войдите или зарегистрируйтесь для доступа к вашим данным.</string>
+    <string name="Registration_label">Регистрация</string>
+    <string name="Registration_login">Вход</string>
+
+    <string name="errorPasswordNotConsists">Пароли не совпадают</string>
+    <string name="errorPasswordShort">Пароль должен быть длинее 6 символов</string>
+    <string name="registerSuccsesful">Новый аккаунт зарегестрирован!</string>
+    <string name="singInSuccsesful">Вы вошли в свой аккаунт!</string>
+    <string name="errorEmptyMail">Почта не может быть пустой</string>
+    <string name="need_email_verif">Требуется подтверждение электронной почты</string>
+    <string name="settings">Настройки</string>
+    <string name="account">Аккаунт</string>
+
+    <string name="mailVerifSend">Письмо отправлено на вашу почту</string>
+    <string name="errorMailVerifSend">Не удалось отправить письмо на вашу почту</string>
+    <string name="account_settings_title">Настройки акканута</string>
+    <string name="sing_out">Выйти</string>
+    <string name="fragment_account_settings_title">Настройки аккаунта</string>
+
+    <string name="exit_dialog_title">Выйти из акканута?</string>
+    <string name="exit_dialog_text">Вы уверены что хотите выйти из аккаунта?</string>
+    <string name="resetEmail">Письмо для сброса пароля отправлено</string>
+    <string name="error">Ошибка</string>
+    <string name="dont_remember_password">Забыли пароль? <u>Сбросить</u></string>
 </resources>

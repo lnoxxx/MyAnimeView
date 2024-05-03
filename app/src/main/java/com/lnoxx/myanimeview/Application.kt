@@ -2,6 +2,7 @@ package com.lnoxx.myanimeview
 
 import android.app.Application
 import androidx.room.Room
+import com.google.firebase.auth.FirebaseUser
 import com.lnoxx.myanimeview.jikanApi.enumClasses.TopFilter
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.Anime
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.AnimeStatisticData
@@ -17,6 +18,7 @@ import kotlinx.coroutines.launch
 import java.util.Calendar
 
 class AnimeViewApplication: Application() {
+    val user: FirebaseUser? = null
     //кэш
     val commentsCache = mutableMapOf<Int, ReviewsResponse>()
     val animeCache = mutableMapOf<Int, Anime>()

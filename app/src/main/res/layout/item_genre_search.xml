@@ -10,8 +10,8 @@
         style="@style/BackgroundedTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginVertical="8dp"
+        android:layout_marginStart="8dp"
         android:drawablePadding="4dp"
         app:drawableEndCompat="@drawable/round_close_24"
         tools:text="Gener" />

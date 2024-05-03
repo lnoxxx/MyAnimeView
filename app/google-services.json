@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "555486606288",
+    "project_id": "animeview-55238",
+    "storage_bucket": "animeview-55238.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:555486606288:android:605a81625951768fa5bfd5",
+        "android_client_info": {
+          "package_name": "com.lnoxx.myanimeview"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAj5jWQ93MabM_-Xphs5-15wK_DjXJ9xis"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

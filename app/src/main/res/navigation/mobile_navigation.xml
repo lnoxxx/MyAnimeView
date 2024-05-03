@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
+    android:label="Настройка акканута"
     app:startDestination="@+id/navigation_tops">
 
     <fragment
         android:id="@+id/navigation_recommendation"
         android:name="com.lnoxx.myanimeview.ui.recommendation.RecommendationFragment"
         android:label="@string/recommendation_fragment_title"
-        tools:layout="@layout/fragment_recommendation" >
+        tools:layout="@layout/fragment_recommendation">
         <action
             android:id="@+id/action_navigation_recommendation_to_searchFragment"
             app:destination="@id/searchFragment"
@@ -30,7 +31,7 @@
         android:id="@+id/navigation_tops"
         android:name="com.lnoxx.myanimeview.ui.tops.TopsFragment"
         android:label="@string/top_fragment_title"
-        tools:layout="@layout/fragment_tops" >
+        tools:layout="@layout/fragment_tops">
         <action
             android:id="@+id/action_navigation_tops_to_searchFragment"
             app:destination="@id/searchFragment"
@@ -51,12 +52,34 @@
         android:id="@+id/navigation_favorite"
         android:name="com.lnoxx.myanimeview.ui.favorite.FavoriteFragment"
         android:label="@string/favorite_fragment_title"
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/fragment_favorite">
+        <action
+            android:id="@+id/action_navigation_favorite_to_registrationFragment"
+            app:destination="@id/registrationFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_navigation_favorite_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_navigation_favorite_to_accountSettingsFragment"
+            app:destination="@id/accountSettingsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.lnoxx.myanimeview.ui.search.SearchFragment"
         android:label="@string/search_title"
-        tools:layout="@layout/fragment_search_fragement" >
+        tools:layout="@layout/fragment_search_fragement">
         <action
             android:id="@+id/action_searchFragment_to_searchResultFragment2"
             app:destination="@id/searchResultFragment2"
@@ -69,7 +92,7 @@
         android:id="@+id/animeViewFragment"
         android:name="com.lnoxx.myanimeview.ui.animeView.AnimeViewFragment"
         android:label="@string/anime_toolbar_title"
-        tools:layout="@layout/fragment_anime_view" >
+        tools:layout="@layout/fragment_anime_view">
         <action
             android:id="@+id/action_animeViewFragment_to_relatedFragment"
             app:destination="@id/relatedFragment"
@@ -114,7 +137,7 @@
         android:id="@+id/searchResultFragment2"
         android:name="com.lnoxx.myanimeview.ui.search_result.SearchResultFragment"
         android:label="@string/search_result_label"
-        tools:layout="@layout/fragment_search_result" >
+        tools:layout="@layout/fragment_search_result">
         <action
             android:id="@+id/action_searchResultFragment2_to_animeViewFragment"
             app:destination="@id/animeViewFragment"
@@ -123,4 +146,19 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.lnoxx.myanimeview.ui.registration.RegistrationFragment"
+        android:label="@string/Registration_label"
+        tools:layout="@layout/fragment_registration" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.lnoxx.myanimeview.ui.login.LoginFragment"
+        android:label="@string/Registration_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/accountSettingsFragment"
+        android:name="com.lnoxx.myanimeview.ui.accountSetings.AccountSettingsFragment"
+        android:label="@string/fragment_account_settings_title"
+        tools:layout="@layout/fragment_account_settings" />
 </navigation>

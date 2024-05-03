@@ -38,9 +38,10 @@
     <style name="BottomNavBarStyle">
         <item name="android:outlineSpotShadowColor">@color/md_theme_dark_outline</item>
         <item name="itemActiveIndicatorStyle">@style/CustomIndicatorStyle</item>
+        <item name="itemIconTint">@color/md_theme_dark_onSurface</item>
     </style>
     <style name="CustomIndicatorStyle" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="android:color">@color/md_theme_dark_surfaceVariant</item>
+        <item name="android:color">@color/md_theme_light_inverseSurface</item>
     </style>
     <!--TabLayout-->
     <style name="TabLayoutStyle" parent= "@style/Widget.Material3.TabLayout.Secondary">
@@ -49,13 +50,17 @@
         <item name="tabIndicatorFullWidth">false</item>
         <item name="tabIndicatorHeight">4dp</item>
         <item name="tabMode">scrollable</item>
-        <item name="tabSelectedTextColor">@color/md_theme_dark_onSurfaceVariant</item>
-        <item name="tabIndicatorColor">@color/md_theme_dark_onSurfaceVariant</item>
+        <item name="tabSelectedTextColor">@color/md_theme_dark_onSurface</item>
+        <item name="tabIndicatorColor">@color/md_theme_dark_onSurface</item>
     </style>
     <!--ToolBar-->
     <style name="ToolBarStyle">
         <item name="iconTint" >@color/md_theme_dark_onSurface</item>
         <item name="android:background">@color/md_theme_light_inverseSurface</item>
+    </style>
+    <style name="ToolBarTitleStyle" parent="MaterialAlertDialog.Material3.Title.Text">
+        <item name="android:textSize">22sp</item>
+        <item name="android:drawableTint">@color/md_theme_dark_onSurface</item>
     </style>
     <!--AnimeBackground-->
     <style name="AnimeBackground">
@@ -132,7 +137,7 @@
     <style name="SliderTheme" parent="Widget.Material3.Slider">
         <item name="trackColorInactive">@color/md_theme_dark_outlineVariant</item>
         <item name="trackColorActive">@color/md_theme_dark_primary</item>
-        <item name="trackHeight">12dp</item>
+        <item name="trackHeight">8dp</item>
         <item name="tickColorActive">@color/md_theme_dark_primary</item>
         <item name="tickColorInactive">@color/md_theme_dark_outlineVariant</item>
         <item name="tickRadiusActive">2dp</item>
@@ -144,5 +149,11 @@
     <!--Switch-->
     <style name="SwitchStyle" parent="Material3TextWithDrawable" >
         <item name="trackTint">@color/switch_selector_dark</item>
+    </style>
+    <!--RedButton-->
+    <style name="RedButton">
+        <item name="iconTint">@color/md_theme_dark_errorContainer</item>
+        <item name="backgroundTint">@color/md_theme_dark_error</item>
+        <item name="android:textColor">@color/md_theme_dark_errorContainer</item>
     </style>
 </resources>

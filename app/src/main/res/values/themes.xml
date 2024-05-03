@@ -49,13 +49,17 @@
         <item name="tabIndicatorFullWidth">false</item>
         <item name="tabIndicatorHeight">4dp</item>
         <item name="tabMode">scrollable</item>
-        <item name="tabSelectedTextColor">@color/md_theme_light_outline</item>
-        <item name="tabIndicatorColor">@color/md_theme_light_outline</item>
+        <item name="tabSelectedTextColor">@color/md_theme_light_onSurface</item>
+        <item name="tabIndicatorColor">@color/md_theme_light_onSurface</item>
     </style>
     <!--ToolBar-->
     <style name="ToolBarStyle">
         <item name="iconTint" >@color/md_theme_light_onSurface</item>
         <item name="android:background">@color/md_theme_light_inverseOnSurface</item>
+    </style>
+    <style name="ToolBarTitleStyle" parent="MaterialAlertDialog.Material3.Title.Text">
+        <item name="android:textSize">22sp</item>
+        <item name="android:drawableTint">@color/md_theme_light_onSurfaceVariant</item>
     </style>
     <!--AnimeBackground-->
     <style name="AnimeBackground">
@@ -96,7 +100,7 @@
         <item name="android:background">@drawable/anime_item_background_light</item>
         <item name="android:paddingHorizontal">16dp</item>
         <item name="android:paddingVertical">8dp</item>
-        <item name="android:drawableTint">@color/md_theme_light_outline</item>
+        <item name="android:drawableTint">@color/md_theme_light_onSurfaceVariant</item>
     </style>
     <!--WhiteBlackTitle-->
     <style name="WhiteBlackTitle" parent="MaterialAlertDialog.Material3.Title.Text">
@@ -144,5 +148,11 @@
     <!--Switch-->
     <style name="SwitchStyle" parent="Material3TextWithDrawable" >
         <item name="trackTint">@color/switch_selector_light</item>
+    </style>
+    <!--RedButton-->
+    <style name="RedButton">
+        <item name="iconTint">@color/md_theme_dark_errorContainer</item>
+        <item name="backgroundTint">@color/md_theme_dark_error</item>
+        <item name="android:textColor">@color/md_theme_dark_errorContainer</item>
     </style>
 </resources>
