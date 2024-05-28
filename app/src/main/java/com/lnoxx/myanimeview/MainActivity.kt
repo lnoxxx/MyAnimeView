@@ -2,6 +2,8 @@ package com.lnoxx.myanimeview
 
 import android.content.Context
 import android.os.Bundle
+import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +11,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.lnoxx.myanimeview.databinding.ActivityMainBinding
 import com.lnoxx.myanimeview.jikanApi.JikanMainClass
 import com.lnoxx.myanimeview.ui.errorAlertDialog.ErrorAlertDialog
@@ -44,4 +50,5 @@ class MainActivity : AppCompatActivity() {
             binding.navView.visibility = View.GONE
         }
     }
+
 }

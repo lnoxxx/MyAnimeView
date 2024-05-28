@@ -1,10 +1,9 @@
 <resources>
-    <string name="app_name">MyAnimeView</string>
+    <string name="app_name">AnimeView</string>
     <string name="top_fragment_title">Рейтинги</string>
     <string name="recommendation_fragment_title">Рекомендации</string>
     <string name="favorite_fragment_title">Любимое</string>
     <string name="search_title">Поиск</string>
-    <string name="types_of_anime_categoryes">Типы топов</string>
 
     <string name="airing_title">Онгоинги</string>
     <string name="upcoming_title">Анонсы</string>
@@ -12,7 +11,7 @@
     <string name="favorite_title">Лучшие оценки</string>
     <string name="animeimage_content_discript">animeImage</string>
     <string name="user_photo_content_discript">user photo</string>
-    <string name="user_recommendation_titile">Рекомендаци пользователей:</string>
+    <string name="user_recommendation_titile">Рекомендации пользователей:</string>
     <string name="spoilers">Спойлеры</string>
 
     <string name="random_anime_button_title">Случайное аниме</string>
@@ -29,7 +28,6 @@
     <string name="ok">Ок</string>
     <string name="errorTitle">Ошибка</string>
     <string name="errorInternet">Проверьте ваше интернет соединение</string>
-    <string name="errorUnknown">Неизвестная ошибка</string>
 
     <string name="episodes">эп</string>
     <string name="synopsys_title">Описание</string>
@@ -49,7 +47,7 @@
     <string name="anime_dont_have_themes">У произведения нет тем!</string>
     <string name="anime_empty_openings">Нет опенингов!</string>
     <string name="no_studios">Нет информации</string>
-    <string name="related_title">Связаное</string>
+    <string name="related_title">Связанное</string>
     <string name="date_title">Даты</string>
 
     <string name="related_fragment_title">Связанное</string>
@@ -66,7 +64,6 @@
 
     <string name="empty_comment">На данное произведение еще нет обзоров</string>
 
-    <string name="empty_relations">Связанные с данным произведением работы отсутсвуют!</string>
     <string name="no_characters_info">Не удалось получить информацию о персонажах произведения</string>
     <string name="name_search">Название</string>
 
@@ -82,7 +79,7 @@
     <string name="complete">Законченные</string>
     <string name="upcoming">Анонсы</string>
 
-    <string name="age_rating">Возростной рейтинг</string>
+    <string name="age_rating">Возрастной рейтинг</string>
     <string name="sfw">SFW?</string>
     <string name="no">Нет</string>
     <string name="yes">Да</string>
@@ -122,7 +119,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_result_label">Результаты поиска</string>
-    <string name="not_found_text">Не удалось ничего найти. Попробуйте изменить филтры.</string>
+    <string name="not_found_text">Не удалось ничего найти. Попробуйте изменить фильтры.</string>
     <string name="error_loading">Ошибка интернет соединения, повторите попытку позже.</string>
     <string name="retry">Повторить</string>
     <string name="add_genre">Добавить жанры</string>
@@ -130,17 +127,17 @@
     <string name="Login">Почта</string>
     <string name="Password">Пароль</string>
     <string name="Paswword_repeat">Повторите пароль</string>
-    <string name="Register">Зарегестрироваться</string>
+    <string name="Register">Зарегистрироваться</string>
     <string name="alredy_have_acccount">Уже есть аккаунт? <u>Войти</u>. </string>
-    <string name="registration_hint_u">Еще нет аккаунта? <u>Зарегестрироваться</u></string>
+    <string name="registration_hint_u">Еще нет аккаунта? <u>Зарегистрироваться</u></string>
     <string name="log_in">Войти</string>
     <string name="sing_in_hint">Войдите или зарегистрируйтесь для доступа к вашим данным.</string>
     <string name="Registration_label">Регистрация</string>
     <string name="Registration_login">Вход</string>
 
     <string name="errorPasswordNotConsists">Пароли не совпадают</string>
-    <string name="errorPasswordShort">Пароль должен быть длинее 6 символов</string>
-    <string name="registerSuccsesful">Новый аккаунт зарегестрирован!</string>
+    <string name="errorPasswordShort">Пароль должен быть длиннее 6 символов</string>
+    <string name="registerSuccsesful">Новый аккаунт зарегистрирован!</string>
     <string name="singInSuccsesful">Вы вошли в свой аккаунт!</string>
     <string name="errorEmptyMail">Почта не может быть пустой</string>
     <string name="need_email_verif">Требуется подтверждение электронной почты</string>
@@ -149,13 +146,29 @@
 
     <string name="mailVerifSend">Письмо отправлено на вашу почту</string>
     <string name="errorMailVerifSend">Не удалось отправить письмо на вашу почту</string>
-    <string name="account_settings_title">Настройки акканута</string>
+    <string name="account_settings_title">Настройки</string>
     <string name="sing_out">Выйти</string>
-    <string name="fragment_account_settings_title">Настройки аккаунта</string>
+    <string name="fragment_account_settings_title">Настройки</string>
 
-    <string name="exit_dialog_title">Выйти из акканута?</string>
+    <string name="exit_dialog_title">Выйти из аккаунта?</string>
     <string name="exit_dialog_text">Вы уверены что хотите выйти из аккаунта?</string>
     <string name="resetEmail">Письмо для сброса пароля отправлено</string>
     <string name="error">Ошибка</string>
     <string name="dont_remember_password">Забыли пароль? <u>Сбросить</u></string>
+    <string name="inFavorite">В любимое</string>
+    <string name="remove">Удалить</string>
+    <string name="night">Темная</string>
+    <string name="day">Светлая</string>
+    <string name="system">Тема устройства</string>
+    <string name="language">Язык</string>
+    <string name="russian">Русский</string>
+    <string name="english">Английский</string>
+    <string name="system_language">Системный</string>
+    <string name="types_of_anime_categoryes">Типы топов</string>
+    <string name="errorUnknown">Неизвестная ошибка</string>
+    <string name="theme">Тема</string>
+    <string name="empty_relations">Связанные с данным произведением работы отсутствуют!</string>
+    <string name="account_setting">Настройки акканута</string>
+    <string name="reset_password">Сбросить пароль</string>
+    <string name="hint_dont_have_favorite">У вас нет любимых произведений!</string>
 </resources>

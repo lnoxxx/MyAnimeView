@@ -155,4 +155,8 @@
         <item name="backgroundTint">@color/md_theme_dark_error</item>
         <item name="android:textColor">@color/md_theme_dark_errorContainer</item>
     </style>
+
+    <style name="chipStyle" parent="Material3TextWithDrawable">
+        <item name="chipIconTint">@color/md_theme_light_outline</item>
+    </style>
 </resources>

@@ -81,6 +81,19 @@ object JikanMainClass {
         }
     }
 
+    suspend fun getBaseAnimeInfo(malId: Int): Anime?{
+        return try{
+            semaphore.acquire()
+            val response = jikanAPI.getBaseAnimeId(malId).data
+            delay(serverDelay)
+            semaphore.release()
+            response
+        }catch (e: Exception){
+            semaphore.release()
+            null
+        }
+    }
+
     suspend fun getAnimeStatistic(malId: Int): AnimeStatisticData?{
         return try{
             semaphore.acquire()

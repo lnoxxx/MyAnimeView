@@ -1,8 +1,12 @@
 package com.lnoxx.myanimeview
 
 import android.app.Application
+import android.content.Context
+import android.util.Log
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.room.Room
 import com.google.firebase.auth.FirebaseUser
+import com.lnoxx.myanimeview.favoriteDatabase.FavoriteAnimeDatabase
 import com.lnoxx.myanimeview.jikanApi.enumClasses.TopFilter
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.Anime
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.AnimeStatisticData
@@ -12,6 +16,7 @@ import com.lnoxx.myanimeview.recomendationDatabase.RecommendationDatabase
 import com.lnoxx.myanimeview.recomendationDatabase.RecommendationUpdateTime
 import com.lnoxx.myanimeview.topsDatabase.TopUpdateTime
 import com.lnoxx.myanimeview.topsDatabase.TopsTypeDatabase
+import com.lnoxx.myanimeview.ui.accountSetings.AccountSettingsFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -43,9 +48,26 @@ class AnimeViewApplication: Application() {
             "RecommendationDatabase"
         ).build()
     }
-    // иницилизация времени в бд
+    val favoriteAnimeDatabase by lazy {
+        Room.databaseBuilder(this,
+            FavoriteAnimeDatabase::class.java,
+            "favoriteAnimeDatabase")
+        .build()
+    }
+
     override fun onCreate() {
         super.onCreate()
+        val sharedPreferences =  this.getSharedPreferences(AccountSettingsFragment.PREF_NAME, Context.MODE_PRIVATE)
+        val savedTheme = sharedPreferences?.getInt(
+            AccountSettingsFragment.KEY_THEME,
+            AccountSettingsFragment.THEME_SYSTEM_DEFAULT
+        )
+        when(savedTheme){
+            AccountSettingsFragment.THEME_LIGHT -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            AccountSettingsFragment.THEME_DARK -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            AccountSettingsFragment.THEME_SYSTEM_DEFAULT ->
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        }
         CoroutineScope(Dispatchers.IO).launch {
             val reviewCnt = recommendationDatabase.getRecommendationUpdateTimeDao().getCount()
             if (reviewCnt == 0){

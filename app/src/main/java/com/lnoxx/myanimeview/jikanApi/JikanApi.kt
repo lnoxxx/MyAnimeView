@@ -19,6 +19,8 @@ interface JikanAPI {
     suspend fun getTopReviews(): ReviewsResponse
     @GET("recommendations/anime")
     suspend fun getAnimeRecommendation(): RecommendationAnimeResponse
+    @GET("anime/{id}")
+    suspend fun getBaseAnimeId(@Path("id") id: Int): FullAnimeResponse
     @GET("anime/{id}/full")
     suspend fun getFullAnimeInfo(@Path("id") id: Int): FullAnimeResponse
     @GET("anime/{id}/statistics")

@@ -45,7 +45,8 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
-    //pieChart
+    implementation("com.google.firebase:firebase-database")
+
     implementation ("com.github.furkanaskin:ClickablePieChart:1.0.9")
     //swipe to refresh
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
@@ -67,6 +68,7 @@ dependencies {
     //Room
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
+    implementation("com.google.firebase:firebase-database-ktx:20.3.1")
     ksp("androidx.room:room-compiler:2.6.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
     //Base

@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.lnoxx.myanimeview.AnimeViewApplication
 import com.lnoxx.myanimeview.MainActivity
@@ -40,6 +42,12 @@ class RegistrationFragment : Fragment() {
             }
             Firebase.auth.createUserWithEmailAndPassword(mail, password).addOnCompleteListener {
                 if (it.isSuccessful){
+                    FirebaseDatabase
+                        .getInstance()
+                        .getReference()
+                        .child("users")
+                        .child(Firebase.auth.uid ?: "none")
+                        .setValue(true)
                     findNavController().navigateUp()
                     Toast.makeText(context,
                         getText(R.string.registerSuccsesful),Toast.LENGTH_SHORT).show()

@@ -21,6 +21,34 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/AnimeViewRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="64dp" />
+
+    <Button
+        android:id="@+id/AddInFavorite"
+        style="@style/primaryButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:padding="16dp"
+        android:text="@string/inFavorite"
+        android:visibility="gone"
+        app:cornerRadius="16dp"
+        app:icon="@drawable/round_favorite_24" />
+
+    <Button
+        android:id="@+id/RemoveFromFavorite"
+        style="@style/RedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:padding="16dp"
+        android:text="@string/remove"
+        android:visibility="gone"
+        app:cornerRadius="16dp"
+        app:icon="@drawable/round_heart_broken_24" />
 
 </FrameLayout>

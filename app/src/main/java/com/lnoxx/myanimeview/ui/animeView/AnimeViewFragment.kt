@@ -1,6 +1,7 @@
 package com.lnoxx.myanimeview.ui.animeView
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,10 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.lnoxx.myanimeview.AnimeViewApplication
 import com.lnoxx.myanimeview.MainActivity
 import com.lnoxx.myanimeview.R
@@ -77,8 +82,58 @@ class AnimeViewFragment : Fragment() {
                 binding.progressIndicator.hide()
                 setStatistic(animeInfo)
                 setComment(animeInfo)
+                if (Firebase.auth.currentUser != null){
+                    addUserData()
+                }
             }
         }
+    }
+
+    private fun addUserData(){
+        val userAnimeList = mutableListOf<Int>()
+        FirebaseDatabase
+            .getInstance()
+            .getReference()
+            .child("users")
+            .child(Firebase.auth.uid!!).get().addOnSuccessListener {
+                for (catalog in it.children){
+                    userAnimeList.add(catalog.key?.toInt() ?: -1)
+                }
+                if (animeId in userAnimeList){
+                    binding.AddInFavorite.visibility = View.INVISIBLE
+                    binding.RemoveFromFavorite.visibility = View.VISIBLE
+                }else{
+                    binding.AddInFavorite.visibility = View.VISIBLE
+                    binding.RemoveFromFavorite.visibility = View.INVISIBLE
+                }
+            }
+        binding.AddInFavorite.setOnClickListener {
+            it.visibility = View.GONE
+            addInFavorite()
+        }
+        binding.RemoveFromFavorite.setOnClickListener {
+            it.visibility = View.GONE
+            removeFromFavorite()
+        }
+    }
+
+    private fun removeFromFavorite(){
+        FirebaseDatabase
+            .getInstance()
+            .getReference()
+            .child("users")
+            .child(Firebase.auth.uid!!)
+            .child(animeId.toString()).removeValue()
+        addUserData()
+    }
+    private fun addInFavorite(){
+        FirebaseDatabase
+            .getInstance()
+            .getReference()
+            .child("users")
+            .child(Firebase.auth.uid!!)
+            .child(animeId.toString()).setValue(true)
+        addUserData()
     }
 
     private fun setComment(anime: Anime){

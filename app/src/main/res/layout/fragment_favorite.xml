@@ -6,73 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".ui.favorite.FavoriteFragment">
 
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/favoriteAnimeList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/userCardView"
-                style="@style/CardViewBackground"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="16dp">
-
-                    <TextView
-                        android:id="@+id/userMail"
-                        style="@style/Material3TextWithDrawable"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintEnd_toStartOf="@+id/accountSettingsButton"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView8"
-                        tools:text="zezezer20@gmail.com" />
-
-                    <TextView
-                        android:id="@+id/textView8"
-                        style="@style/Material3TitleWithDrawable"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/account"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <Button
-                        android:id="@+id/accountSettingsButton"
-                        style="@style/primaryButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/settings"
-                        app:icon="@drawable/round_build_24"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
-    </ScrollView>
+        android:layout_height="match_parent"
+        android:nestedScrollingEnabled="true"
+        tools:itemCount="3"
+        tools:listitem="@layout/item_anime_without_number" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/noUserLayout"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginHorizontal="16dp"
+        android:padding="32dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -112,5 +61,30 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/LoginHintText" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/favProgressIndicator"
+        style="@style/ProgressIndicatorStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:visibility="visible"
+        app:showAnimationBehavior="inward" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/hintDontHaveFavorite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        style="@style/Material3TextWithDrawable"
+        android:text="@string/hint_dont_have_favorite"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:gravity="center"
+        app:drawableTopCompat="@drawable/round_error_outline_24"/>
+
+
+
 
 </FrameLayout>
