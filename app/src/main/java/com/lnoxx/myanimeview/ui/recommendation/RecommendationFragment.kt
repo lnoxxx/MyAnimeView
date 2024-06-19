@@ -125,6 +125,13 @@ class RecommendationFragment : Fragment() {
             }
             return
         }
+        if (response.data == null){
+            withContext(Dispatchers.Main){
+                Snackbar.make(requireView(),getText(R.string.error_loading), Snackbar.LENGTH_SHORT)
+                    .show()
+            }
+            return
+        }
         val recommendationList = responseToRecommendationCacheList(response, recommendationCount)
         cacheRecommendation(recommendationList)
         withContext(Dispatchers.Main){

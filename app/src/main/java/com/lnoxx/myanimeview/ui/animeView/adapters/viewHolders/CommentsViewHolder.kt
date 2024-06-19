@@ -88,12 +88,6 @@ class CommentsRecyclerViewAdapter(private val comments: ReviewsResponse,
         }
     }
 
-//    fun addComments(newComments: ReviewsResponse){
-//        val oldSize = comments.data.size
-//        comments.data.addAll(newComments.data)
-//        notifyItemRangeInserted(oldSize, comments.data.size)
-//    }
-
     override fun onBindViewHolder(holder: CommentItemViewHolder, position: Int) {
         if (isEmpty) {
             holder.bind(null)

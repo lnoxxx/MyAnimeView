@@ -1,5 +1,6 @@
 package com.lnoxx.myanimeview.topsDatabase
 
+import android.util.Log
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.Anime

@@ -96,9 +96,9 @@ class AnimeViewAdapter(private val anime: Anime)
     }
 
     fun notifyCommentsLoaded(){
-        notifyItemChanged(7)
+        notifyItemChanged(ADDITIONAL)
     }
     fun notifyStatisticLoaded(){
-        notifyItemChanged(6)
+        notifyItemChanged(STATISTIC)
     }
 }

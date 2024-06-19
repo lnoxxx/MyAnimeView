@@ -1,6 +1,5 @@
 package com.lnoxx.myanimeview.jikanApi
 
-import android.util.Log
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.Anime
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.AnimeStatisticData
 import com.lnoxx.myanimeview.jikanApi.responseDataClasses.CharactersResponse

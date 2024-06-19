@@ -69,7 +69,7 @@ class ReviewCacheBottomSheet(private val review: ReviewCache): BottomSheetDialog
         Picasso.get().load(review.userImage).into(binding.userReviewImageView)
         binding.usernameTextView.text = review.userName
         binding.scoreReviewText.text = review.score.toString()
-        val reviewText =  review.review + "\n\n\n\n\n"
+        val reviewText =  review.review + "\n"
         binding.ReviewText.text = reviewText
     }
 

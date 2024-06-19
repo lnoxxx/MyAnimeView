@@ -35,7 +35,6 @@ class TopsFragment : Fragment() {
         setTabLayout()
         binding.typeListViewPager.offscreenPageLimit = 4
     }
-    // добавление иконки поиска в action bar
     private fun setActionBar(){
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(object : MenuProvider {
@@ -53,7 +52,6 @@ class TopsFragment : Fragment() {
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
-    // табы
     private fun setTabLayout(){
         binding.typeListViewPager.adapter =
             ViewPagerTopAdapter(this)

@@ -140,9 +140,14 @@ class TopListFragment : Fragment(), TopListAdapter.AnimeClickListener {
         if (animeTop == null){
             withContext(Dispatchers.Main){
                 Snackbar.make(requireView(),getText(R.string.error_loading),Snackbar.LENGTH_SHORT)
-                    .setAction(R.string.retry){
-                        this.launch { setContentFromApi() }
-                    }
+                    .show()
+            }
+            binding.refreshLayout.isRefreshing = false
+            return
+        }
+        if (animeTop.data == null){
+            withContext(Dispatchers.Main){
+                Snackbar.make(requireView(),getText(R.string.error_loading),Snackbar.LENGTH_SHORT)
                     .show()
             }
             binding.refreshLayout.isRefreshing = false

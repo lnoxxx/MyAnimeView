@@ -17,7 +17,7 @@ object LanguageManager {
 
     fun getLocale(context: Context): Locale {
         val prefs = context.getSharedPreferences("animeViewPref", Context.MODE_PRIVATE)
-        val language = prefs.getString("Language", "ru") // "en" is the default language
+        val language = prefs.getString("Language", "ru")
         return Locale(language!!)
     }
 

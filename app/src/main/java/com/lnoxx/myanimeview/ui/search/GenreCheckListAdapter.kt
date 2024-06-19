@@ -24,7 +24,6 @@ class GenreCheckListAdapter(private val genreList: List<Genre>,
                 } else {
                     selectedGenres.remove(genre)
                 }
-//                Log.d("mylog", selectedGenres.toString())
             }
         }
     }
